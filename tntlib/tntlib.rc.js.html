@@ -1,0 +1,663 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width" charset="utf-8">
+    <title>TnTLib</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/cayman.min.css">
+    <link rel="stylesheet" href="css/prism.min.css">
+    <link rel="stylesheet" href="css/index.min.css">
+    <link rel="stylesheet" href="css/docs.min.css">
+    <link rel="stylesheet" href="css/bootstrap-responsive.min.css">
+  </head>
+  <body data-spy="scroll" data-target=".scrollspy">
+    <div class="navbar navbar-inverse navbar-fixed-top">
+      <div class="navbar-inner">
+        <div class="container"><a class="brand">Mr. Doc</a>
+          <div class="nav-collapse collapse">
+            <ul class="nav pull-right sponsored"></ul>
+          </div>
+        </div>
+      </div>
+    </div>
+    <header id="overview" class="jumbotron subhead">
+      <div class="container">
+        <h1>TnTLib</h1>
+        <p class="lead"></p>
+      </div>
+    </header>
+    <div class="container">
+      <div class="row">
+        <div class="span3 bs-docs-sidebar">
+          <ul class="nav nav-list bs-docs-sidenav affix-top">
+            <li><a href="index.html">Main</a></li>
+            <li class="active"><a href="tntlib.rc.js.html">tntlib.rc.js</a></li>
+          </ul>
+          <div class="scrollspy">
+            <ul class="nav nav-list bs-docs-sidenav affix-top">
+              <li><a href="#options"><i class="alert alert-success"></i><span>options</span></a>
+              </li>
+              <li><a href="#runtime"><i class="alert alert-success"></i><span>runtime</span></a>
+              </li>
+              <li><a href="#campaign"><i class="alert alert-success"></i><span>campaign</span></a>
+              </li>
+              <li><a href="#Error"><i class="alert alert-info"></i><span>Error</span></a>
+              </li>
+              <li><a href="#checkNested"><i class="alert alert-info"></i><span>checkNested</span></a>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="span9">
+          <div class="description"><p>globals $, jQuery, unescape, mboxFactoryDefault, mboxDefine, mboxAjaxFetcher, mboxUpdate, tntClick, s_dell</p></div>
+          <section id="options">
+            <h1>options</h1>
+            <h5 class="subheader"></h5>
+            <p>
+              <div class="label label-success radius ctx-type">property</div><span>&nbsp;</span><span>this.options</span><span>&nbsp;</span>
+            </p>
+          </section>
+          <table class="table table-bordered table-striped">
+            <thead>
+              <tr>
+                <th style="width:20%">Option name</th>
+                <th style="width:20%">Type</th>
+                <th>Description</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>version</td>
+                <td>string</td>
+                <td><p>Current lib version</p></td>
+              </tr>
+            </tbody>
+          </table>
+          <div class="description"><p>Contains all the tntLib global options.</p></div>
+          <pre><code class="language-javascript">this.options = {
+    version: '0.7'
+};</code></pre>
+          <section id="runtime">
+            <h1>runtime</h1>
+            <h5 class="subheader"></h5>
+            <p>
+              <div class="label label-success radius ctx-type">property</div><span>&nbsp;</span><span>this.runtime</span><span>&nbsp;</span>
+            </p>
+          </section>
+          <table class="table table-bordered table-striped">
+            <thead>
+              <tr>
+                <th style="width:20%">Option name</th>
+                <th style="width:20%">Type</th>
+                <th>Description</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>total</td>
+                <td>integer</td>
+                <td><p>Total test runtime (in millissecons)</p></td>
+              </tr>
+              <tr>
+                <td>details</td>
+                <td>array</td>
+                <td><p>Detailed array containing each executed function runtime (in millisseconds)</p></td>
+              </tr>
+            </tbody>
+          </table>
+          <div class="description"><p>Contains the runtime data of the current test.</p></div>
+          <pre><code class="language-javascript">this.runtime = {
+    total: 0,
+    details: []
+};</code></pre>
+          <section id="campaign">
+            <h1>campaign</h1>
+            <h5 class="subheader"></h5>
+            <p>
+              <div class="label label-success radius ctx-type">property</div><span>&nbsp;</span><span>this.campaign</span><span>&nbsp;</span>
+            </p>
+          </section>
+          <table class="table table-bordered table-striped">
+            <thead>
+              <tr>
+                <th style="width:20%">Option name</th>
+                <th style="width:20%">Type</th>
+                <th>Description</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>mbox</td>
+                <td>string</td>
+                <td><p>Name of the mbox running the test&#39;s code</p></td>
+              </tr>
+              <tr>
+                <td>number</td>
+                <td>string</td>
+                <td><p>Campaign number</p></td>
+              </tr>
+              <tr>
+                <td>id</td>
+                <td>string</td>
+                <td><p>Campaign ID on Adobe Target</p></td>
+              </tr>
+              <tr>
+                <td>recipe.id</td>
+                <td>string</td>
+                <td><p>Recipe ID</p></td>
+              </tr>
+              <tr>
+                <td>recipe.name</td>
+                <td>string</td>
+                <td><p>Recipe Name</p></td>
+              </tr>
+            </tbody>
+          </table>
+          <div class="description"><p>Contains the current test&#39;s campaign data.</p></div>
+          <pre><code class="language-javascript">this.campaign = {
+    mbox: mbox,
+    number: (name.split(' ')[0]).replace('#', ''),
+    id: id,
+    name: name,
+    recipe: {
+        id: recipe.charAt(0),
+        name: recipe
+    }
+};
+
+this.styles = {
+    normal: 'background: #eaeaff; color: #000',
+    bold: 'background: #eaeaff; color: #000; font-weight: bold',
+    errorNormal: 'font-weight: normal',
+    errorBold: 'font-weight: bold'
+};
+
+this.ajaxQueue = [];</code></pre>
+          <div class="description"><p>##################################################################################################################</p></div>
+          <pre><code class="language-javascript">// write headers commonly used for tntbuild and info extensions
+this.writeHeaders = function () {
+    'use strict';
+
+    $('body').prepend('&lt;input type=&quot;hidden&quot; class=&quot;tt_info&quot; value=&quot;' + this.campaign.number + ' - cid: ' + this.campaign.id + ' - ' + this.campaign.recipe.name + '&quot; /&gt;');
+};
+
+// extend method without using jquery
+this.extend = function (obj) {
+    'use strict';
+
+    for (var key in obj)
+        if (obj.hasOwnProperty(key)) {
+            if (typeof obj[key] == 'function') {
+                this[key] = this.wrapTimer(key, obj[key]);
+            } else {
+                this[key] = obj[key];
+            }
+        }
+
+    return this;
+};
+
+// load plugins commonly used on tests
+this.loadPlugins = function () {
+    'use strict';
+
+    //tryCatch Plugin 4.0 (date released - 08/18/2015)
+    ; (function (e) { e.fn.EmailnDeactivate = function (t, cId, o, r, a, s) { var f, x, tntBrowser, tntTraceStack, tntIE89 = &quot;no&quot;, tntDocumentMode; var win = window.location.href, winProt = window.location.protocol; var isOpera = !!window.opera || navigator.userAgent.indexOf(&quot; OPR/&quot;) &gt;= 0; var isFirefox = typeof InstallTrigger !== &quot;undefined&quot;; var isSafari = Object.prototype.toString.call(window.HTMLElement).indexOf(&quot;Constructor&quot;) &gt; 0; var isChrome = !!window.chrome &amp;&amp; !isOpera; var isIE =</code></pre>
+          <div class="description"></div>
+          <pre><code class="language-javascript">alse || !!document.documentMode; if (isIE === true) { isIE = &quot;IE &quot; + document.documentMode; tntBrowser = isIE; tntDocumentMode = document.documentMode.toString(); if (tntDocumentMode === &quot;8&quot; || tntDocumentMode === &quot;9&quot;) { tntIE89 = &quot;yes&quot;; } else { tntIE89 = &quot;no&quot;; } } else { if (isChrome === true) { tntBrowser = &quot;Chrome&quot;; } else { if (isSafari === true) { tntBrowser = &quot;Safari&quot;; } else { if (isFirefox === true) { tntBrowser = &quot;Firefox&quot;; } else { if (isOpera === true) { tntBrowser = &quot;Opera&quot;; } else { tntBrowser = &quot;Browser not detected&quot;; } } } } } if (a.stack !== undefined) { tntTraceStack = a.stack; } else { tntTraceStack = &quot;Stack Trace not found&quot;; } if (t !== undefined &amp;&amp; t !== &quot;&quot; &amp;&amp; t !== null &amp;&amp; cId !== undefined &amp;&amp; cId !== &quot;&quot; &amp;&amp; cId !== null) { DELL.tnt.console(&quot;We have cName &amp; cId values, go for the new plugin&quot;); DELL.tnt.console(&quot;***value of QA is:--&quot; + s); if (s !== undefined &amp;&amp; s === true) { DELL.tnt.console(&quot;QA in progress, don't send emails or deactivate the camapign&quot;); if (o === true) { DELL.tnt.console(&quot;iFrame bailout&quot;); f = window.parent.location; t = f.search ? &quot;&amp;&quot; : &quot;?&quot;; window.parent.location.replace(f.protocol + &quot;//&quot; + f.host + f.pathname + f.search + t + &quot;ref=&quot; + r + f.hash); } else { DELL.tnt.console(&quot;NON iFrame bailout&quot;); f = window.location; t = f.search ? &quot;&amp;&quot; : &quot;?&quot;; window.location.replace(f.protocol + &quot;//&quot; + f.host + f.pathname + f.search + t + &quot;ref=&quot; + r + f.hash); } } else { if (s !== undefined &amp;&amp; s === false) { DELL.tnt.console(&quot;Live Campaign, Got to send an email, no QA in progress&quot;); if (a.name !== &quot;&quot; &amp;&amp; a.message !== &quot;&quot;) { if (win.indexOf(&quot;file://&quot;) &gt; -1) { DELL.tnt.console(&quot;someone is trying to save the webpage, ignore and dont do anything&quot;); } else { if (tntIE89 === &quot;yes&quot;) { DELL.tnt.console(&quot;IE8 or IE9, use the plugin and change the ajax call. the protocol of webhook has to match the page protcol and contentType is added&quot;); e.getScript(&quot;http://cdnjs.cloudflare.com/ajax/libs/jquery-ajaxtransport-xdomainrequest/1.0.3/jquery.xdomainrequest.min.js&quot;, function () { DELL.tnt.console(&quot;LOAD COMPLETED-0&quot;); e.ajax({ type: &quot;POST&quot;, url: winProt + &quot;//worker-aws-us-east-1.iron.io/2/projects/538d336e3ba6c60085000044/tasks/webhook?code_name=tryCatch1&amp;oauth=mCOpmqgfBPQwn2jGZZkLH2FI3wE&quot;, contentType: &quot;text/plain&quot;, dataType: &quot;json&quot;, data: { t: t, cId: cId, win: win, aMes: a.message, aNam: a.name, tntBrowser: tntBrowser, r: r, tntTraceStack: tntTraceStack }, error: function (tntErr) { DELL.tnt.console(&quot;Ajax call has this error-if else if&quot;); DELL.tnt.console(tntErr); } }).always(function () { DELL.tnt.console(&quot;Recipe has this Error:--&quot; + a.name + &quot;:&quot; + a.message, &quot;error&quot;); if (o === true) { DELL.tnt.console(&quot;iFrame bailout&quot;); x = window.parent.location; t = x.search ? &quot;&amp;&quot; : &quot;?&quot;; window.parent.location.replace(x.protocol + &quot;//&quot; + x.host + x.pathname + x.search + t + &quot;ref=&quot; + r + x.hash); } else { DELL.tnt.console(&quot;NON iFrame bailout&quot;); x = window.location; t = x.search ? &quot;&amp;&quot; : &quot;?&quot;; window.location.replace(x.protocol + &quot;//&quot; + x.host + x.pathname + x.search + t + &quot;ref=&quot; + r + x.hash); } }); }); } else { if (tntIE89 === &quot;no&quot;) { DELL.tnt.console(&quot;not IE8 or IE9, so normal ajax calls&quot;); e.ajax({ type: &quot;POST&quot;, url: &quot;https://worker-aws-us-east-1.iron.io/2/projects/538d336e3ba6c60085000044/tasks/webhook?code_name=tryCatch1&amp;oauth=mCOpmqgfBPQwn2jGZZkLH2FI3wE&quot;, dataType: &quot;json&quot;, data: { t: t, cId: cId, win: win, aMes: a.message, aNam: a.name, tntBrowser: tntBrowser, r: r, tntTraceStack: tntTraceStack }, error: function (tntErr) { DELL.tnt.console(&quot;Ajax call has this error-if else if&quot;); DELL.tnt.console(tntErr); } }).always(function () { DELL.tnt.console(&quot;Recipe has this Error:--&quot; + a.name + &quot;:&quot; + a.message, &quot;error&quot;); if (o === true) { DELL.tnt.console(&quot;iFrame bailout&quot;); x = window.parent.location; t = x.search ? &quot;&amp;&quot; : &quot;?&quot;; window.parent.location.replace(x.protocol + &quot;//&quot; + x.host + x.pathname + x.search + t + &quot;ref=&quot; + r + x.hash); } else { DELL.tnt.console(&quot;NON iFrame bailout&quot;); x = window.location; t = x.search ? &quot;&amp;&quot; : &quot;?&quot;; window.location.replace(x.protocol + &quot;//&quot; + x.host + x.pathname + x.search + t + &quot;ref=&quot; + r + x.hash); } }); } } } } else { if (tntIE89 === &quot;yes&quot;) { DELL.tnt.console(&quot;IE8 or IE9, use the plugin and change the ajax call. the protocol of webhook has to match the page protcol and contentType is added&quot;); e.getScript(&quot;http://cdnjs.cloudflare.com/ajax/libs/jquery-ajaxtransport-xdomainrequest/1.0.3/jquery.xdomainrequest.min.js&quot;, function () { DELL.tnt.console(&quot;LOAD COMPLETED-1&quot;); e.ajax({ type: &quot;POST&quot;, url: winProt + &quot;//worker-aws-us-east-1.iron.io/2/projects/538d336e3ba6c60085000044/tasks/webhook?code_name=tryCatch1&amp;oauth=mCOpmqgfBPQwn2jGZZkLH2FI3wE&quot;, contentType: &quot;text/plain&quot;, dataType: &quot;json&quot;, data: { t: t, cId: cId, tntBrowser: tntBrowser, r: r, tntTraceStack: tntTraceStack }, error: function () { DELL.tnt.console(&quot;Ajax call has this error-else else if&quot;); } }).always(function () { DELL.tnt.console(&quot;Recipe has this Error:--&quot; + a.name + &quot;:&quot; + a.message, &quot;error&quot;); if (o === true) { DELL.tnt.console(&quot;iFrame bailout&quot;); x = window.parent.location; t = x.search ? &quot;&amp;&quot; : &quot;?&quot;; window.parent.location.replace(x.protocol + &quot;//&quot; + x.host + x.pathname + x.search + t + &quot;ref=&quot; + r + x.hash); } else { DELL.tnt.console(&quot;NON iFrame bailout&quot;); x = window.location; t = x.search ? &quot;&amp;&quot; : &quot;?&quot;; window.location.replace(x.protocol + &quot;//&quot; + x.host + x.pathname + x.search + t + &quot;ref=&quot; + r + x.hash); } }); }); } else { if (tntIE89 === &quot;no&quot;) { DELL.tnt.console(&quot;not IE8 or IE9, so normal ajax calls&quot;); e.ajax({ type: &quot;POST&quot;, url: &quot;https://worker-aws-us-east-1.iron.io/2/projects/538d336e3ba6c60085000044/tasks/webhook?code_name=tryCatch1&amp;oauth=mCOpmqgfBPQwn2jGZZkLH2FI3wE&quot;, dataType: &quot;json&quot;, data: { t: t, cId: cId, tntBrowser: tntBrowser, r: r, tntTraceStack: tntTraceStack }, error: function () { DELL.tnt.console(&quot;Ajax call has this error-else else if&quot;); } }).always(function () { DELL.tnt.console(&quot;Recipe has this Error:--&quot; + a.name + &quot;:&quot; + a.message, &quot;error&quot;); if (o === true) { DELL.tnt.console(&quot;iFrame bailout&quot;); x = window.parent.location; t = x.search ? &quot;&amp;&quot; : &quot;?&quot;; window.parent.location.replace(x.protocol + &quot;//&quot; + x.host + x.pathname + x.search + t + &quot;ref=&quot; + r + x.hash); } else { DELL.tnt.console(&quot;NON iFrame bailout&quot;); x = window.location; t = x.search ? &quot;&amp;&quot; : &quot;?&quot;; window.location.replace(x.protocol + &quot;//&quot; + x.host + x.pathname + x.search + t + &quot;ref=&quot; + r + x.hash); } }); } } } } } } else { DELL.tnt.console(&quot;We don't have cName or cId values, so go for the convetinal reload&quot;); f = window.location; t = f.search ? &quot;&amp;&quot; : &quot;?&quot;; window.location.replace(f.protocol + &quot;//&quot; + f.host + f.pathname + f.search + t + &quot;ref=&quot; + r + f.hash); } }; })(jQuery);
+
+        // jQuery available Plugin 1.7.0 (20121201)
+        // By John Terenzio | http://terenz.io | MIT License
+        ; (function ($) { var i, queue = [], check = function () { for (i = 0; i &lt; queue.length; ++i) { if ($(queue[i][0])[0] &amp;&amp; (queue[i][2] || ($(queue[i][0]).next()[0] || $.isReady))) { try { queue[i][1].apply($(queue[i][0]).eq(0)); } catch (e) { if (typeof window.console !== &quot;undefined&quot;) { window.console.log(e); } } queue.splice(i, 1); --i; } } if (queue.length &amp;&amp; !$.isReady) { window.setTimeout(check, 10); } }; $.fn.available = function (fn, turbo) { turbo = turbo || false; queue.push([this.selector, fn, turbo]); check(); return this; }; })(jQuery);
+    };
+
+    // bailout function for errors
+    this.bailOut = function (e) {
+        'use strict';
+
+        var name = this.campaign.name,
+            cname = '&quot;' + name + '&quot;',
+            cId = this.campaign.id,
+            iframe = false,
+            ref = this.campaign.number + 'x' + this.campaign.recipe.id + '&amp;x=1', //ONLY CHANGE REF. PARAMETER
+            qa = true,
+            $ = jQuery;
+
+        if (cname.toLowerCase().indexOf('qa') &lt; 0) { qa = false; }
+        //DELL.tnt.console(e.name + ':' + e.message, &quot;error&quot;);
+        $().EmailnDeactivate(cname, cId, iframe, ref, e, qa);
+    };
+
+    // placeholder initialization function
+    this.init = function () { };
+
+    // main execute function, makes the magic happen
+    this.execute = function (context, start) {
+        'use strict';
+
+        var _this = context || this,
+            startTime = start || new Date().getTime(),
+            runTime;
+
+        if (typeof jQuery == &quot;function&quot;) {
+            if (typeof $ !== &quot;function&quot;) {
+                window.$ = jQuery;
+            }
+
+            //DELL.tnt.console(&quot;running&quot;);
+            this.loadPlugins();
+
+            try {
+                this.writeHeaders();
+                this.extendMethods();
+
+                runTime = new Date().getTime() - startTime;
+                this.runtime.total += runTime;
+                this.runtime.details.push('test start &gt;&gt; ' + runTime + 'ms');
+
+                this.init();
+
+                if (typeof console != 'undefined' &amp;&amp; console.info) {
+                    console.info('%cRunning campaign %c#' + this.campaign.number + '%c, recipe %c' + this.campaign.recipe.id + ' %con mbox %c' + this.campaign.mbox, this.styles.normal, this.styles.bold, this.styles.normal, this.styles.bold, this.styles.normal, this.styles.bold);
+                }
+            } catch (e) {
+                this.bailOut(e);
+            }
+        } else {
+            //DELL.tnt.console(&quot;no JQ yet&quot;);
+            setTimeout(function () { _this.execute(_this, startTime); }, 1000);
+        }
+
+        return _this;
+    };
+
+    this.extendMethods = function () {
+        var _this = this;
+
+        (function (send) {
+            XMLHttpRequest.prototype.send = function (data) {
+                var stateChange,
+                    self = this;
+
+                function onReadyStateChange() {
+                    if (self.readyState == 4) {
+                        for (var i = _this.ajaxQueue.length; i--;) {
+                            _this.ajaxQueue[i](_this, this.responseURL);
+                        }
+                    }
+
+                    if (stateChange) {
+                        stateChange();
+                    }
+                }
+
+                if (this.addEventListener) {
+                    this.addEventListener(&quot;readystatechange&quot;, onReadyStateChange, false);
+                } else {
+                    stateChange = this.onreadystatechange;
+                    this.onreadystatechange = onReadyStateChange;
+                }
+
+                send.call(this, data);
+            };
+        })(XMLHttpRequest.prototype.send);
+    };</code></pre>
+          <div class="description"><p>##################################################################################################################</p></div>
+          <pre><code class="language-javascript">// cookie management functions
+this.cookie = {
+    get: function (cookieName) {
+        'use strict';
+
+        var results = document.cookie.match('(^|;) ?' + cookieName + '=([^;]*)(;|$)');
+        if (results) {
+            return (unescape(results[2]));
+        } else {
+            return null;
+        }
+    },
+
+    set: function (name, value, exp_y, exp_m, exp_d, path, domain, secure) {
+        'use strict';
+
+        var cookie_string = name + &quot;=&quot; + window.escape(value);
+        if (exp_y) {
+            var expires = new Date(exp_y, exp_m, exp_d);
+            cookie_string += '; expires=' + expires.toGMTString();
+        }
+        if (path) {
+            cookie_string += '; path=' + window.escape(path);
+        }
+        if (domain) {
+            cookie_string += '; domain=' + window.escape(domain);
+        }
+        if (secure) {
+            cookie_string += '; secure';
+        }
+        document.cookie = cookie_string;
+    }
+};
+
+this.getParameter = function (url, key) {
+    'use strict';
+
+    var match = url.match('[?&amp;]' + key + '=([^&amp;#]+)');
+    return match ? match[1] : '';
+};</code></pre>
+          <div class="description"><p>##################################################################################################################</p></div>
+          <pre><code class="language-javascript">// main clicktrack function
+this.clickTrack = function (clicked, callback) {
+    'use strict';
+
+    var mbox = mboxFactoryDefault.getMboxes()._mboxes.filter(function (mbox) {
+        return (mbox._name === 'MboxClicktrack');
+    });
+
+    if (!mbox.length) {
+        mboxDefine(&quot;MboxClicktrack&quot;, &quot;MboxClicktrack&quot;).setFetcher(new mboxAjaxFetcher());
+    }
+
+    //DELL.tnt.console(&quot;clicked=&quot; + clicked);
+    if (typeof console != 'undefined' &amp;&amp; console.info) {
+        console.info('%cClicktrack triggered: %c' + clicked, this.styles.normal, this.styles.bold);
+    }
+
+
+    if (callback) {
+        if (!$('#MboxClicktrack').length) {
+            $('body').append('&lt;div id=&quot;MboxClicktrack&quot; /&gt;');
+        }
+
+        mboxUpdate(&quot;MboxClicktrack&quot;, &quot;clicked=&quot; + clicked, &quot;callback=&quot; + callback);
+    } else {
+        mboxUpdate(&quot;MboxClicktrack&quot;, &quot;clicked=&quot; + clicked);
+    }
+
+    return this;
+};
+
+// Adds a ref param to link or element
+this.addRef = function (linkStr, ref) {
+    'use strict';
+
+    var link = document.createElement('a'), host, queries;
+
+    link.href = linkStr;
+    queries = link.href.match(/\?[^#?]*/g);
+
+    if (queries) {
+        link.search = &quot;?&quot;;
+        for (var i = 0; i &lt; queries.length; i++) {
+            link.search += queries[i].substring(1) + ((i &lt; queries.length - 1) ? &quot;&amp;&quot; : &quot;&quot;);
+        }
+        if (link.hash) {
+            link.hash = link.hash.replace(/\?[^#?]*/, &quot;&quot;);
+        }
+    }
+
+    if (link.href.indexOf(&quot;ref=&quot;) &gt; -1) {
+        return link.href.replace(&quot;ref=&quot;, &quot;ref=&quot; + ref + &quot;|&quot;);
+    }
+
+    if (link.search) {
+        return link.href.replace(&quot;?&quot;, &quot;?ref=&quot; + ref + &quot;&amp;&quot;);
+    }
+
+    if (link.href.indexOf(&quot;?&quot;) &gt; -1) {
+        var badQS = link.href.match(/\?([^#]*)/);
+        link.href = link.href.replace(badQS[0], &quot;&quot;);
+        if (link.pathname.charAt(0) !== &quot;/&quot;) { //IE wierdness
+            host = (link.host.substr(-3) === &quot;:80&quot;) ? link.hostname : link.host;
+            return link.protocol + &quot;//&quot; + host + &quot;/&quot; + link.pathname + &quot;?ref=&quot; + ref + &quot;&amp;&quot; + badQS[1] + link.hash;
+        } else {
+            return link.protocol + &quot;//&quot; + link.host + link.pathname + &quot;?ref=&quot; + ref + &quot;&amp;&quot; + badQS[1] + link.hash;
+        }
+    }
+
+    if (link.pathname.charAt(0) !== &quot;/&quot;) { //IE wierdness
+        host = (link.host.substr(-3) === &quot;:80&quot;) ? link.hostname : link.host;
+        return link.protocol + &quot;//&quot; + host + &quot;/&quot; + link.pathname + &quot;?ref=&quot; + ref + link.hash;
+    } else {
+        return link.protocol + &quot;//&quot; + link.host + link.pathname + &quot;?ref=&quot; + ref + link.hash;
+    }
+};
+
+this.directInject = function (val, context) {
+    'use strict';
+
+    var _this = context || this;
+
+    if ((typeof s_dell === &quot;object&quot;) &amp;&amp; (typeof s_dell.tl === &quot;function&quot;)) {
+        if (typeof console != 'undefined' &amp;&amp; console.info) {
+            console.info('%cDirect inject triggered: %c' + val, _this.styles.normal, _this.styles.bold);
+        }
+
+        tntClick(val, '${campaign.id}:${campaign.recipe.id}:0');
+    } else {
+        _this.setTimeout(function () {
+            _this.directInject(val, _this);
+        }, 500, 'Direct inject (&quot;' + val + '&quot;) timeout error!');
+    }
+};</code></pre>
+          <div class="description"><p>##################################################################################################################</p></div>
+          <pre><code class="language-javascript">// Fixes eComm cart data in case of unescaped quotes on product info
+this.fixCartData = function () {
+    'use strict';
+
+    var ecommScript = $('#maincontentcnt').children().filter('script:contains(&quot;cartData&quot;)').text();
+
+    if (ecommScript !== '') {
+        var reBasket = /\{.+\}$/g,
+            reQuotes = /([^\{\:\,])\&quot;([^\}\:\,])/g,
+            originalBasket = ecommScript.split(';')[2].match(reBasket)[0],
+            fixedBasket = originalBasket.replace(reQuotes, '$1\\&quot;$2');
+
+        return JSON.parse(fixedBasket);
+    }
+
+    return false;
+};
+
+/*##################################################################################################################*/
+
+// tnt API call
+this.apiCall = function (type, id, params, fn, e) {
+    'use strict';
+
+    var _this = this,
+        success = _this.wrapFunction(fn, 'API Call callback error!');
+
+    if (DELL.tnt.api) {
+        DELL.tnt.api.get(type, id, params, success, e);
+        return;
+    }
+
+    $.getScript(window.location.protocol + '//www.dell.com/html/global/tnt/tntapi.js', function () {
+        try {
+            DELL.tnt.api.get(type, id, params, success, e);
+        } catch (e) {
+            _this.Error('API Call error!', e);
+        }
+    });
+};</code></pre>
+          <section id="Error">
+            <h1>Error</h1>
+            <h5 class="subheader"></h5>
+            <p>
+              <div class="label label-info radius ctx-type">method</div><span>&nbsp;</span><span>this.Error()</span><span>&nbsp;</span>
+            </p>
+          </section>
+          <div class="description"><p>##################################################################################################################</p></div>
+          <pre><code class="language-javascript">this.Error = function (msg, e) {
+    console.error(
+        msg + '\n' +
+        '\nName:\t\t%c' + (e.name || '-') +
+        '\n%cMessage:\t%c' + (e.message || '-') +
+        '\n%cStack:\n\n' + (e.stack || '-'),
+        this.styles.errorBold, this.styles.errorNormal, this.styles.errorBold, this.styles.errorNormal
+    );
+
+    this.bailOut(e);
+};
+
+// Wraps a function and its args on a try catch with the bailout plugin integrated to it
+this.wrapFunction = function (fn, msg) {
+    'use strict';
+
+    var _this = this;
+
+    return function () {
+        try {
+            return fn.apply(_this, arguments);
+        } catch (e) {
+            _this.Error(msg, e);
+        }
+    };
+};
+
+// Wraps a function and its args with a timer, in order to keep track of run times
+this.wrapTimer = function (name, fn) {
+    'use strict';
+
+    var _this = this;
+
+    return function () {
+        var args = Array.prototype.slice.call(arguments),
+            startTime = new Date().getTime(),
+            runTime, fnReturn;
+
+        fnReturn = fn.apply(_this, args);
+
+        runTime = new Date().getTime() - startTime;
+        this.runtime.total += runTime;
+        this.runtime.details.push(name + '(' + JSON.stringify(args).slice(1, -1) + ') &gt;&gt; ' + runTime + 'ms');
+
+        return fnReturn;
+    };
+};
+
+// setTimeout, wrapped in a try catch
+this.setTimeout = function (fn, timer, msg) {
+    'use strict';
+
+    window.setTimeout(this.wrapFunction(fn, msg || 'setTimeout callback error!'), timer, msg);
+};
+
+// $.available, wrapped in a try catch
+this.available = function (selector, fn, turbo) {
+    'use strict';
+
+    $(selector).available(this.wrapFunction(fn, 'Available callback error!'), turbo);
+};
+
+// $(document).ready, wrapped in a try catch
+this.ready = function (fn) {
+    'use strict';
+
+    $(document).ready(this.wrapFunction(fn, 'Document ready callback error!'));
+};
+
+// Intercepts every ajax complete event, wrapped in a try catch
+this.ajaxComplete = function (request, fn) {
+    this.ajaxQueue.push(function (_this, url) {
+        try {
+            if (url.indexOf(request) &gt; -1) {
+                fn.apply(_this, arguments);
+            }
+        } catch (e) {
+            _this.Error('AjaxComplete callback error!', e);
+        }
+    });
+};</code></pre>
+          <section id="checkNested">
+            <h1>checkNested</h1>
+            <h5 class="subheader"></h5>
+            <p>
+              <div class="label label-info radius ctx-type">method</div><span>&nbsp;</span><span>this.checkNested()</span><span>&nbsp;</span>
+            </p>
+          </section>
+          <div class="description"><p>##################################################################################################################</p></div>
+          <pre><code class="language-javascript">this.checkNested = function (obj) {
+    'use strict';
+    var args = Array.prototype.slice.call(arguments);
+    obj = args.shift();
+
+    if (typeof obj === &quot;undefined&quot;) {
+        return false;
+    } else {
+        for (var i = 0; i &lt; args.length; i++) {
+            if (!obj.hasOwnProperty(args[i])) {
+                return false;
+            }
+            obj = obj[args[i]];
+        }
+        return true;
+    }
+};
+
+this.waitForElement = function (selector, callback, context, start) {
+    &quot;use strict&quot;;
+
+    var _this = context || this,
+        startTime = start || new Date().getTime(),
+        runTime;
+
+    if ($(selector).length) {
+        callback.apply($(selector), arguments);
+
+        runTime = new Date().getTime() - startTime;
+        this.runtime.total += runTime;
+        this.runtime.details.push('waitForElement(' + selector + ') &gt;&gt; ' + runTime + 'ms');
+
+        return;
+    }
+
+    _this.setTimeout(function () {
+        _this.waitForElement(selector, callback, _this);
+    }, 250, 'waitForElement &quot;' + selector + '&quot; callback error!');
+};
+
+this.preload = function (images, path) {
+    &quot;use strict&quot;;
+
+    if (!$('#tnt-preload').length) {
+        $('body').append('&lt;div id=&quot;tnt-preload&quot; style=&quot;display: none&quot;&gt;&lt;/div&gt;');
+    }
+
+    var toPreload = '';
+
+    for (var i = images.length; i--;) {
+        toPreload += '&lt;link rel=&quot;prefetch&quot; href=&quot;' + path + images[i] + '&quot;&gt;';
+    }
+
+    $('#tnt-preload').append(toPreload);
+};</code></pre>
+          <div class="description"><p>##################################################################################################################</p></div>
+          <pre><code class="language-javascript">// if there's any test specific code, add it to the object
+if (code) {
+    this.extend(code);
+}
+
+// returns object so there can be chaining
+return this;
+};</code></pre>
+        </div>
+      </div>
+    </div>
+    <footer class="footer">
+      <div class="container">
+        <p>Documentation generated with <a href="https://github.com/mr-doc/mr-doc">Mr. Doc </a> created by <a href="https://twitter.com/FGRibreau" data-show-count="false" class="twitter-follow-button">Francois-Guillaume Ribreau </a></p>
+        <p>Mr. Doc is sponsored by <a href="http://bringr.net/?btt" title="Outil d'analyse des réseaux sociaux" class="bringr">Bringr </a> and <a href="https://redsmin.com/?btt" title="Full Redis GUI" class="redsmin">Redsmin</a></p>
+        <p>Theme borrowed from Twitter Bootstrap</p>
+      </div>
+    </footer>
+    <script src="js/twitter-widget.min.js"></script>
+    <script src="js/jquery.min.js"></script>
+    <script src="js/bootstrap-transition.min.js"></script>
+    <script src="js/bootstrap-scrollspy.min.js"></script>
+    <script src="js/bootstrap-dropdown.min.js"></script>
+    <script src="js/bootstrap-collapse.min.js"></script>
+    <script src="js/bootstrap-affix.min.js"></script>
+    <script src="js/prism.min.js"></script>
+    <script src="js/index.min.js"></script>
+  </body>
+</html>
