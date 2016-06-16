@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html>
   <head>
     <meta name="viewport" content="width=device-width" charset="utf-8">
@@ -75,11 +75,30 @@
               </li>
               <li><a href="#fixCartData"><i class="alert alert-info"></i><span>fixCartData</span></a>
               </li>
+              <li><a href="#Error"><i class="alert alert-info"></i><span>Error</span></a>
+              </li>
+              <li><a href="#wrapFunction"><i class="alert alert-info"></i><span>wrapFunction</span></a>
+              </li>
+              <li><a href="#wrapTimer"><i class="alert alert-info"></i><span>wrapTimer</span></a>
+              </li>
+              <li><a href="#setTimeout"><i class="alert alert-info"></i><span>setTimeout</span></a>
+              </li>
+              <li><a href="#available"><i class="alert alert-info"></i><span>available</span></a>
+              </li>
+              <li><a href="#ready"><i class="alert alert-info"></i><span>ready</span></a>
+              </li>
+              <li><a href="#ajaxComplete"><i class="alert alert-info"></i><span>ajaxComplete</span></a>
+              </li>
+              <li><a href="#checkNested"><i class="alert alert-info"></i><span>checkNested</span></a>
+              </li>
+              <li><a href="#waitForElement"><i class="alert alert-info"></i><span>waitForElement</span></a>
+              </li>
+              <li><a href="#preload"><i class="alert alert-info"></i><span>preload</span></a>
+              </li>
             </ul>
           </div>
         </div>
         <div class="span9">
-          <div class="description"><p>globals $, jQuery, unescape, mboxFactoryDefault, mboxDefine, mboxAjaxFetcher, mboxUpdate, tntClick, s_dell</p></div>
           <section id="options">
             <h1>options</h1>
             <h5 class="subheader"></h5>
@@ -854,11 +873,11 @@
 
 /**
 * Calls the TnT API for Sales Catalog information
-* @param {string} type               Name of the cookie
-* @param {string} id                 Value to be stored
-* @param {integer} params            Expiration year
-* @param {integer} fn                Expiration month
-* @param {integer} e                 Expiration day
+* @param {string} type               Type of the search. Possible values: [ oc | sku | model | configs ]
+* @param {string} id                 ID of the element being searched (oc, sku, etc)
+* @param {string} params             Element's parameters that will be requested
+* @param {function} fn               Function that will be executed on a successful request
+* @param {function} e                Function that will be executed on a failed request
 */
 this.apiCall = function (type, id, params, fn, e) {
     'use strict';
@@ -878,9 +897,37 @@ this.apiCall = function (type, id, params, fn, e) {
             _this.Error('API Call error!', e);
         }
     });
-};
-
-this.Error = function (msg, e) {
+};</code></pre>
+          <section id="Error">
+            <h1>Error</h1>
+            <h5 class="subheader"></h5>
+            <p>
+              <div class="label label-info radius ctx-type">method</div><span>&nbsp;</span><span>this.Error()</span><span>&nbsp;</span>
+            </p>
+          </section>
+          <table class="table table-bordered table-striped">
+            <thead>
+              <tr>
+                <th style="width:20%">Option name</th>
+                <th style="width:20%">Type</th>
+                <th>Description</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>msg</td>
+                <td>string</td>
+                <td><p>Custom error message to be displayed</p></td>
+              </tr>
+              <tr>
+                <td>e</td>
+                <td>object</td>
+                <td><p>Error object</p></td>
+              </tr>
+            </tbody>
+          </table>
+          <div class="description"><p>Custom error handling function that adds extra information to the browser&#39;s console before triggering a bailout</p></div>
+          <pre><code class="language-javascript">this.Error = function (msg, e) {
     console.error(
         msg + '\n' +
         '\nName:\t\t%c' + (e.name || '-') +
@@ -890,10 +937,42 @@ this.Error = function (msg, e) {
     );
 
     this.bailOut(e);
-};
-
-// Wraps a function and its args on a try catch with the bailout plugin integrated to it
-this.wrapFunction = function (fn, msg) {
+};</code></pre>
+          <section id="wrapFunction">
+            <h1>wrapFunction</h1>
+            <h5 class="subheader"></h5>
+            <p>
+              <div class="label label-info radius ctx-type">method</div><span>&nbsp;</span><span>this.wrapFunction()</span><span>&nbsp;</span>
+            </p>
+          </section>
+          <table class="table table-bordered table-striped">
+            <thead>
+              <tr>
+                <th style="width:20%">Option name</th>
+                <th style="width:20%">Type</th>
+                <th>Description</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>fn</td>
+                <td>function</td>
+                <td><p>Base function</p></td>
+              </tr>
+              <tr>
+                <td>msg</td>
+                <td>string</td>
+                <td><p>Custom error message, in case of function failure</p></td>
+              </tr>
+              <tr>
+                <td>return</td>
+                <td>function</td>
+                <td><p>The resulting wrapped function</p></td>
+              </tr>
+            </tbody>
+          </table>
+          <div class="description"><p>Wraps a function and its args on a try catch with the bailout plugin integrated to it</p></div>
+          <pre><code class="language-javascript">this.wrapFunction = function (fn, msg) {
     'use strict';
 
     var _this = this;
@@ -905,10 +984,42 @@ this.wrapFunction = function (fn, msg) {
             _this.Error(msg, e);
         }
     };
-};
-
-// Wraps a function and its args with a timer, in order to keep track of run times
-this.wrapTimer = function (name, fn) {
+};</code></pre>
+          <section id="wrapTimer">
+            <h1>wrapTimer</h1>
+            <h5 class="subheader"></h5>
+            <p>
+              <div class="label label-info radius ctx-type">method</div><span>&nbsp;</span><span>this.wrapTimer()</span><span>&nbsp;</span>
+            </p>
+          </section>
+          <table class="table table-bordered table-striped">
+            <thead>
+              <tr>
+                <th style="width:20%">Option name</th>
+                <th style="width:20%">Type</th>
+                <th>Description</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>name</td>
+                <td>string</td>
+                <td><p>Function name</p></td>
+              </tr>
+              <tr>
+                <td>fn</td>
+                <td>function</td>
+                <td><p>Base function</p></td>
+              </tr>
+              <tr>
+                <td>return</td>
+                <td>function</td>
+                <td><p>The resulting wrapped function</p></td>
+              </tr>
+            </tbody>
+          </table>
+          <div class="description"><p>Wraps a function and its args with a timer, in order to keep track of run times</p></div>
+          <pre><code class="language-javascript">this.wrapTimer = function (name, fn) {
     'use strict';
 
     var _this = this;
@@ -926,31 +1037,144 @@ this.wrapTimer = function (name, fn) {
 
         return fnReturn;
     };
-};
-
-// setTimeout, wrapped in a try catch
-this.setTimeout = function (fn, timer, msg) {
+};</code></pre>
+          <section id="setTimeout">
+            <h1>setTimeout</h1>
+            <h5 class="subheader"></h5>
+            <p>
+              <div class="label label-info radius ctx-type">method</div><span>&nbsp;</span><span>this.setTimeout()</span><span>&nbsp;</span>
+            </p>
+          </section>
+          <table class="table table-bordered table-striped">
+            <thead>
+              <tr>
+                <th style="width:20%">Option name</th>
+                <th style="width:20%">Type</th>
+                <th>Description</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>fn</td>
+                <td>function</td>
+                <td><p>Callback function to be executed on the determined timeout</p></td>
+              </tr>
+              <tr>
+                <td>timer</td>
+                <td>integer</td>
+                <td><p>Time in millisseconds to wait before triggering the callback</p></td>
+              </tr>
+              <tr>
+                <td>msg</td>
+                <td>string</td>
+                <td><p>Custom error message, in case of function failure</p></td>
+              </tr>
+            </tbody>
+          </table>
+          <div class="description"><p>setTimeout, wrapped in a try catch</p></div>
+          <pre><code class="language-javascript">this.setTimeout = function (fn, timer, msg) {
     'use strict';
 
     window.setTimeout(this.wrapFunction(fn, msg || 'setTimeout callback error!'), timer, msg);
-};
-
-// $.available, wrapped in a try catch
-this.available = function (selector, fn, turbo) {
+};</code></pre>
+          <section id="available">
+            <h1>available</h1>
+            <h5 class="subheader"></h5>
+            <p>
+              <div class="label label-info radius ctx-type">method</div><span>&nbsp;</span><span>this.available()</span><span>&nbsp;</span>
+            </p>
+          </section>
+          <table class="table table-bordered table-striped">
+            <thead>
+              <tr>
+                <th style="width:20%">Option name</th>
+                <th style="width:20%">Type</th>
+                <th>Description</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>selector</td>
+                <td>string</td>
+                <td><p>Time in millisseconds to wait before triggering the callback</p></td>
+              </tr>
+              <tr>
+                <td>fn</td>
+                <td>function</td>
+                <td><p>Callback function to be executed on the determined timeout</p></td>
+              </tr>
+              <tr>
+                <td>turbo</td>
+                <td>boolean</td>
+                <td><p>Custom error message, in case of function failure</p></td>
+              </tr>
+            </tbody>
+          </table>
+          <div class="description"><p>$.available, wrapped in a try catch</p></div>
+          <pre><code class="language-javascript">this.available = function (selector, fn, turbo) {
     'use strict';
 
     $(selector).available(this.wrapFunction(fn, 'Available callback error!'), turbo);
-};
-
-// $(document).ready, wrapped in a try catch
-this.ready = function (fn) {
+};</code></pre>
+          <section id="ready">
+            <h1>ready</h1>
+            <h5 class="subheader"></h5>
+            <p>
+              <div class="label label-info radius ctx-type">method</div><span>&nbsp;</span><span>this.ready()</span><span>&nbsp;</span>
+            </p>
+          </section>
+          <table class="table table-bordered table-striped">
+            <thead>
+              <tr>
+                <th style="width:20%">Option name</th>
+                <th style="width:20%">Type</th>
+                <th>Description</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>fn</td>
+                <td>function</td>
+                <td><p>Callback function to be executed</p></td>
+              </tr>
+            </tbody>
+          </table>
+          <div class="description"><p>$(document).ready, wrapped in a try catch</p></div>
+          <pre><code class="language-javascript">this.ready = function (fn) {
     'use strict';
 
     $(document).ready(this.wrapFunction(fn, 'Document ready callback error!'));
-};
-
-// Intercepts every ajax complete event, wrapped in a try catch
-this.ajaxComplete = function (request, fn) {
+};</code></pre>
+          <section id="ajaxComplete">
+            <h1>ajaxComplete</h1>
+            <h5 class="subheader"></h5>
+            <p>
+              <div class="label label-info radius ctx-type">method</div><span>&nbsp;</span><span>this.ajaxComplete()</span><span>&nbsp;</span>
+            </p>
+          </section>
+          <table class="table table-bordered table-striped">
+            <thead>
+              <tr>
+                <th style="width:20%">Option name</th>
+                <th style="width:20%">Type</th>
+                <th>Description</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>request</td>
+                <td>string</td>
+                <td><p>Part of request URL that will trigger the callback</p></td>
+              </tr>
+              <tr>
+                <td>fn</td>
+                <td>function</td>
+                <td><p>Callback function to be executed on ajax completion</p></td>
+              </tr>
+            </tbody>
+          </table>
+          <div class="description"><p>Intercepts every ajax complete event, and runs a callback function wrapped in a try catch</p></div>
+          <pre><code class="language-javascript">this.ajaxComplete = function (request, fn) {
     this.ajaxQueue.push(function (_this, url) {
         try {
             if (url.indexOf(request) &gt; -1) {
@@ -960,9 +1184,37 @@ this.ajaxComplete = function (request, fn) {
             _this.Error('AjaxComplete callback error!', e);
         }
     });
-};
-
-this.checkNested = function (obj) {
+};</code></pre>
+          <section id="checkNested">
+            <h1>checkNested</h1>
+            <h5 class="subheader"></h5>
+            <p>
+              <div class="label label-info radius ctx-type">method</div><span>&nbsp;</span><span>this.checkNested()</span><span>&nbsp;</span>
+            </p>
+          </section>
+          <table class="table table-bordered table-striped">
+            <thead>
+              <tr>
+                <th style="width:20%">Option name</th>
+                <th style="width:20%">Type</th>
+                <th>Description</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>obj</td>
+                <td>object</td>
+                <td><p>Object to be checked. First argument should be an object name, following parts should be string. Example object: [ DELL, &#39;com&#39;, &#39;Mag&#39; ]</p></td>
+              </tr>
+              <tr>
+                <td>return</td>
+                <td>boolean</td>
+                <td><p>true if available, false otherwise</p></td>
+              </tr>
+            </tbody>
+          </table>
+          <div class="description"><p>Checks if object value exists already and is available</p></div>
+          <pre><code class="language-javascript">this.checkNested = function (obj) {
     'use strict';
     var args = Array.prototype.slice.call(arguments);
     obj = args.shift();
@@ -978,9 +1230,47 @@ this.checkNested = function (obj) {
         }
         return true;
     }
-};
-
-this.waitForElement = function (selector, callback, context, start) {
+};</code></pre>
+          <section id="waitForElement">
+            <h1>waitForElement</h1>
+            <h5 class="subheader"></h5>
+            <p>
+              <div class="label label-info radius ctx-type">method</div><span>&nbsp;</span><span>this.waitForElement()</span><span>&nbsp;</span>
+            </p>
+          </section>
+          <table class="table table-bordered table-striped">
+            <thead>
+              <tr>
+                <th style="width:20%">Option name</th>
+                <th style="width:20%">Type</th>
+                <th>Description</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>selector</td>
+                <td>string</td>
+                <td><p>jQuery selector that will match the element being sought</p></td>
+              </tr>
+              <tr>
+                <td>callback</td>
+                <td>function</td>
+                <td><p>Callback function to be executed when the element is found</p></td>
+              </tr>
+              <tr>
+                <td>context</td>
+                <td>object</td>
+                <td><p>Used to keep the context as the lib object instead of window when doing recursion</p></td>
+              </tr>
+              <tr>
+                <td>start</td>
+                <td>datetime</td>
+                <td><p>Starting time when the function begin to run</p></td>
+              </tr>
+            </tbody>
+          </table>
+          <div class="description"><p>Waits for an element to be available on the page and then runs a callback function</p></div>
+          <pre><code class="language-javascript">this.waitForElement = function (selector, callback, context, start) {
     &quot;use strict&quot;;
 
     var _this = context || this,
@@ -1000,9 +1290,37 @@ this.waitForElement = function (selector, callback, context, start) {
     _this.setTimeout(function () {
         _this.waitForElement(selector, callback, _this);
     }, 250, 'waitForElement &quot;' + selector + '&quot; callback error!');
-};
-
-this.preload = function (images, path) {
+};</code></pre>
+          <section id="preload">
+            <h1>preload</h1>
+            <h5 class="subheader"></h5>
+            <p>
+              <div class="label label-info radius ctx-type">method</div><span>&nbsp;</span><span>this.preload()</span><span>&nbsp;</span>
+            </p>
+          </section>
+          <table class="table table-bordered table-striped">
+            <thead>
+              <tr>
+                <th style="width:20%">Option name</th>
+                <th style="width:20%">Type</th>
+                <th>Description</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>images</td>
+                <td>array</td>
+                <td><p>List of image names to be preloaded. Example: [ &#39;image1.jpg&#39;, &#39;image2.gif&#39; ]</p></td>
+              </tr>
+              <tr>
+                <td>path</td>
+                <td>string</td>
+                <td><p>Path of the images. Example: &#39;<a href="http://i.dell.com/t1234/">http://i.dell.com/t1234/</a>&#39;</p></td>
+              </tr>
+            </tbody>
+          </table>
+          <div class="description"><p>Preloads image(s) on the page, for posterior use.</p></div>
+          <pre><code class="language-javascript">this.preload = function (images, path) {
     &quot;use strict&quot;;
 
     if (!$('#tnt-preload').length) {
@@ -1016,15 +1334,6 @@ this.preload = function (images, path) {
     }
 
     $('#tnt-preload').append(toPreload);
-};
-
-// if there's any test specific code, add it to the object
-if (code) {
-    this.extend(code);
-}
-
-// returns object so there can be chaining
-return this;
 };</code></pre>
         </div>
       </div>
