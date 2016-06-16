@@ -41,9 +41,39 @@
               </li>
               <li><a href="#campaign"><i class="alert alert-success"></i><span>campaign</span></a>
               </li>
-              <li><a href="#Error"><i class="alert alert-info"></i><span>Error</span></a>
+              <li><a href="#styles"><i class="alert alert-success"></i><span>styles</span></a>
               </li>
-              <li><a href="#checkNested"><i class="alert alert-info"></i><span>checkNested</span></a>
+              <li><a href="#ajaxQueue"><i class="alert alert-success"></i><span>ajaxQueue</span></a>
+              </li>
+              <li><a href="#writeHeaders"><i class="alert alert-info"></i><span>writeHeaders</span></a>
+              </li>
+              <li><a href="#extend"><i class="alert alert-info"></i><span>extend</span></a>
+              </li>
+              <li><a href="#loadPlugins"><i class="alert alert-info"></i><span>loadPlugins</span></a>
+              </li>
+              <li><a href="#bailOut"><i class="alert alert-info"></i><span>bailOut</span></a>
+              </li>
+              <li><a href="#init"><i class="alert alert-info"></i><span>init</span></a>
+              </li>
+              <li><a href="#execute"><i class="alert alert-info"></i><span>execute</span></a>
+              </li>
+              <li><a href="#extendMethods"><i class="alert alert-info"></i><span>extendMethods</span></a>
+              </li>
+              <li><a href="#cookie"><i class="alert alert-success"></i><span>cookie</span></a>
+              </li>
+              <li><a href="#get"><i class="alert alert-info"></i><span>get</span></a>
+              </li>
+              <li><a href="#set"><i class="alert alert-info"></i><span>set</span></a>
+              </li>
+              <li><a href="#getParameter"><i class="alert alert-info"></i><span>getParameter</span></a>
+              </li>
+              <li><a href="#clickTrack"><i class="alert alert-info"></i><span>clickTrack</span></a>
+              </li>
+              <li><a href="#addRef"><i class="alert alert-info"></i><span>addRef</span></a>
+              </li>
+              <li><a href="#directInject"><i class="alert alert-info"></i><span>directInject</span></a>
+              </li>
+              <li><a href="#fixCartData"><i class="alert alert-info"></i><span>fixCartData</span></a>
               </li>
             </ul>
           </div>
@@ -163,26 +193,104 @@
         id: recipe.charAt(0),
         name: recipe
     }
-};
-
-this.styles = {
+};</code></pre>
+          <section id="styles">
+            <h1>styles</h1>
+            <h5 class="subheader"></h5>
+            <p>
+              <div class="label label-success radius ctx-type">property</div><span>&nbsp;</span><span>this.styles</span><span>&nbsp;</span>
+            </p>
+          </section>
+          <table class="table table-bordered table-striped">
+            <thead>
+              <tr>
+                <th style="width:20%">Option name</th>
+                <th style="width:20%">Type</th>
+                <th>Description</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>normal</td>
+                <td>string</td>
+                <td><p>Normal text, purple background</p></td>
+              </tr>
+              <tr>
+                <td>bold</td>
+                <td>string</td>
+                <td><p>Bold text, purple background</p></td>
+              </tr>
+              <tr>
+                <td>errorNormal</td>
+                <td>string</td>
+                <td><p>Normal text</p></td>
+              </tr>
+              <tr>
+                <td>errorBold</td>
+                <td>string</td>
+                <td><p>Bold text</p></td>
+              </tr>
+            </tbody>
+          </table>
+          <div class="description"><p>Contains styles used on console.info messages</p></div>
+          <pre><code class="language-javascript">this.styles = {
     normal: 'background: #eaeaff; color: #000',
     bold: 'background: #eaeaff; color: #000; font-weight: bold',
     errorNormal: 'font-weight: normal',
     errorBold: 'font-weight: bold'
-};
-
-this.ajaxQueue = [];</code></pre>
-          <div class="description"><p>##################################################################################################################</p></div>
-          <pre><code class="language-javascript">// write headers commonly used for tntbuild and info extensions
-this.writeHeaders = function () {
+};</code></pre>
+          <section id="ajaxQueue">
+            <h1>ajaxQueue</h1>
+            <h5 class="subheader"></h5>
+            <p>
+              <div class="label label-success radius ctx-type">property</div><span>&nbsp;</span><span>this.ajaxQueue</span><span>&nbsp;</span>
+            </p>
+          </section>
+          <div class="description"><p>Contains a function queue for ajax callbacks</p></div>
+          <pre><code class="language-javascript">this.ajaxQueue = [];</code></pre>
+          <section id="writeHeaders">
+            <h1>writeHeaders</h1>
+            <h5 class="subheader"></h5>
+            <p>
+              <div class="label label-info radius ctx-type">method</div><span>&nbsp;</span><span>this.writeHeaders()</span><span>&nbsp;</span>
+            </p>
+          </section>
+          <div class="description"><p>Writes tt_info data into the page, grabbing data from the test&#39;s campaign</p></div>
+          <pre><code class="language-javascript">this.writeHeaders = function () {
     'use strict';
 
     $('body').prepend('&lt;input type=&quot;hidden&quot; class=&quot;tt_info&quot; value=&quot;' + this.campaign.number + ' - cid: ' + this.campaign.id + ' - ' + this.campaign.recipe.name + '&quot; /&gt;');
-};
-
-// extend method without using jquery
-this.extend = function (obj) {
+};</code></pre>
+          <section id="extend">
+            <h1>extend</h1>
+            <h5 class="subheader"></h5>
+            <p>
+              <div class="label label-info radius ctx-type">method</div><span>&nbsp;</span><span>this.extend()</span><span>&nbsp;</span>
+            </p>
+          </section>
+          <table class="table table-bordered table-striped">
+            <thead>
+              <tr>
+                <th style="width:20%">Option name</th>
+                <th style="width:20%">Type</th>
+                <th>Description</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>obj</td>
+                <td>object</td>
+                <td><p>The test&#39;s custom code</p></td>
+              </tr>
+              <tr>
+                <td>return</td>
+                <td>object</td>
+                <td><p>The lib object, used for chaining</p></td>
+              </tr>
+            </tbody>
+          </table>
+          <div class="description"><p>Native javascript function to extend the object with more methods, used to join the test&#39;s custom code with the lib.</p></div>
+          <pre><code class="language-javascript">this.extend = function (obj) {
     'use strict';
 
     for (var key in obj)
@@ -195,157 +303,379 @@ this.extend = function (obj) {
         }
 
     return this;
-};
-
-// load plugins commonly used on tests
-this.loadPlugins = function () {
+};</code></pre>
+          <section id="loadPlugins">
+            <h1>loadPlugins</h1>
+            <h5 class="subheader"></h5>
+            <p>
+              <div class="label label-info radius ctx-type">method</div><span>&nbsp;</span><span>this.loadPlugins()</span><span>&nbsp;</span>
+            </p>
+          </section>
+          <div class="description"><p>Loads jQuery plugins that are commonly used on tests</p></div>
+          <pre><code class="language-javascript">this.loadPlugins = function () {
     'use strict';
 
     //tryCatch Plugin 4.0 (date released - 08/18/2015)
-    ; (function (e) { e.fn.EmailnDeactivate = function (t, cId, o, r, a, s) { var f, x, tntBrowser, tntTraceStack, tntIE89 = &quot;no&quot;, tntDocumentMode; var win = window.location.href, winProt = window.location.protocol; var isOpera = !!window.opera || navigator.userAgent.indexOf(&quot; OPR/&quot;) &gt;= 0; var isFirefox = typeof InstallTrigger !== &quot;undefined&quot;; var isSafari = Object.prototype.toString.call(window.HTMLElement).indexOf(&quot;Constructor&quot;) &gt; 0; var isChrome = !!window.chrome &amp;&amp; !isOpera; var isIE =</code></pre>
-          <div class="description"></div>
-          <pre><code class="language-javascript">alse || !!document.documentMode; if (isIE === true) { isIE = &quot;IE &quot; + document.documentMode; tntBrowser = isIE; tntDocumentMode = document.documentMode.toString(); if (tntDocumentMode === &quot;8&quot; || tntDocumentMode === &quot;9&quot;) { tntIE89 = &quot;yes&quot;; } else { tntIE89 = &quot;no&quot;; } } else { if (isChrome === true) { tntBrowser = &quot;Chrome&quot;; } else { if (isSafari === true) { tntBrowser = &quot;Safari&quot;; } else { if (isFirefox === true) { tntBrowser = &quot;Firefox&quot;; } else { if (isOpera === true) { tntBrowser = &quot;Opera&quot;; } else { tntBrowser = &quot;Browser not detected&quot;; } } } } } if (a.stack !== undefined) { tntTraceStack = a.stack; } else { tntTraceStack = &quot;Stack Trace not found&quot;; } if (t !== undefined &amp;&amp; t !== &quot;&quot; &amp;&amp; t !== null &amp;&amp; cId !== undefined &amp;&amp; cId !== &quot;&quot; &amp;&amp; cId !== null) { DELL.tnt.console(&quot;We have cName &amp; cId values, go for the new plugin&quot;); DELL.tnt.console(&quot;***value of QA is:--&quot; + s); if (s !== undefined &amp;&amp; s === true) { DELL.tnt.console(&quot;QA in progress, don't send emails or deactivate the camapign&quot;); if (o === true) { DELL.tnt.console(&quot;iFrame bailout&quot;); f = window.parent.location; t = f.search ? &quot;&amp;&quot; : &quot;?&quot;; window.parent.location.replace(f.protocol + &quot;//&quot; + f.host + f.pathname + f.search + t + &quot;ref=&quot; + r + f.hash); } else { DELL.tnt.console(&quot;NON iFrame bailout&quot;); f = window.location; t = f.search ? &quot;&amp;&quot; : &quot;?&quot;; window.location.replace(f.protocol + &quot;//&quot; + f.host + f.pathname + f.search + t + &quot;ref=&quot; + r + f.hash); } } else { if (s !== undefined &amp;&amp; s === false) { DELL.tnt.console(&quot;Live Campaign, Got to send an email, no QA in progress&quot;); if (a.name !== &quot;&quot; &amp;&amp; a.message !== &quot;&quot;) { if (win.indexOf(&quot;file://&quot;) &gt; -1) { DELL.tnt.console(&quot;someone is trying to save the webpage, ignore and dont do anything&quot;); } else { if (tntIE89 === &quot;yes&quot;) { DELL.tnt.console(&quot;IE8 or IE9, use the plugin and change the ajax call. the protocol of webhook has to match the page protcol and contentType is added&quot;); e.getScript(&quot;http://cdnjs.cloudflare.com/ajax/libs/jquery-ajaxtransport-xdomainrequest/1.0.3/jquery.xdomainrequest.min.js&quot;, function () { DELL.tnt.console(&quot;LOAD COMPLETED-0&quot;); e.ajax({ type: &quot;POST&quot;, url: winProt + &quot;//worker-aws-us-east-1.iron.io/2/projects/538d336e3ba6c60085000044/tasks/webhook?code_name=tryCatch1&amp;oauth=mCOpmqgfBPQwn2jGZZkLH2FI3wE&quot;, contentType: &quot;text/plain&quot;, dataType: &quot;json&quot;, data: { t: t, cId: cId, win: win, aMes: a.message, aNam: a.name, tntBrowser: tntBrowser, r: r, tntTraceStack: tntTraceStack }, error: function (tntErr) { DELL.tnt.console(&quot;Ajax call has this error-if else if&quot;); DELL.tnt.console(tntErr); } }).always(function () { DELL.tnt.console(&quot;Recipe has this Error:--&quot; + a.name + &quot;:&quot; + a.message, &quot;error&quot;); if (o === true) { DELL.tnt.console(&quot;iFrame bailout&quot;); x = window.parent.location; t = x.search ? &quot;&amp;&quot; : &quot;?&quot;; window.parent.location.replace(x.protocol + &quot;//&quot; + x.host + x.pathname + x.search + t + &quot;ref=&quot; + r + x.hash); } else { DELL.tnt.console(&quot;NON iFrame bailout&quot;); x = window.location; t = x.search ? &quot;&amp;&quot; : &quot;?&quot;; window.location.replace(x.protocol + &quot;//&quot; + x.host + x.pathname + x.search + t + &quot;ref=&quot; + r + x.hash); } }); }); } else { if (tntIE89 === &quot;no&quot;) { DELL.tnt.console(&quot;not IE8 or IE9, so normal ajax calls&quot;); e.ajax({ type: &quot;POST&quot;, url: &quot;https://worker-aws-us-east-1.iron.io/2/projects/538d336e3ba6c60085000044/tasks/webhook?code_name=tryCatch1&amp;oauth=mCOpmqgfBPQwn2jGZZkLH2FI3wE&quot;, dataType: &quot;json&quot;, data: { t: t, cId: cId, win: win, aMes: a.message, aNam: a.name, tntBrowser: tntBrowser, r: r, tntTraceStack: tntTraceStack }, error: function (tntErr) { DELL.tnt.console(&quot;Ajax call has this error-if else if&quot;); DELL.tnt.console(tntErr); } }).always(function () { DELL.tnt.console(&quot;Recipe has this Error:--&quot; + a.name + &quot;:&quot; + a.message, &quot;error&quot;); if (o === true) { DELL.tnt.console(&quot;iFrame bailout&quot;); x = window.parent.location; t = x.search ? &quot;&amp;&quot; : &quot;?&quot;; window.parent.location.replace(x.protocol + &quot;//&quot; + x.host + x.pathname + x.search + t + &quot;ref=&quot; + r + x.hash); } else { DELL.tnt.console(&quot;NON iFrame bailout&quot;); x = window.location; t = x.search ? &quot;&amp;&quot; : &quot;?&quot;; window.location.replace(x.protocol + &quot;//&quot; + x.host + x.pathname + x.search + t + &quot;ref=&quot; + r + x.hash); } }); } } } } else { if (tntIE89 === &quot;yes&quot;) { DELL.tnt.console(&quot;IE8 or IE9, use the plugin and change the ajax call. the protocol of webhook has to match the page protcol and contentType is added&quot;); e.getScript(&quot;http://cdnjs.cloudflare.com/ajax/libs/jquery-ajaxtransport-xdomainrequest/1.0.3/jquery.xdomainrequest.min.js&quot;, function () { DELL.tnt.console(&quot;LOAD COMPLETED-1&quot;); e.ajax({ type: &quot;POST&quot;, url: winProt + &quot;//worker-aws-us-east-1.iron.io/2/projects/538d336e3ba6c60085000044/tasks/webhook?code_name=tryCatch1&amp;oauth=mCOpmqgfBPQwn2jGZZkLH2FI3wE&quot;, contentType: &quot;text/plain&quot;, dataType: &quot;json&quot;, data: { t: t, cId: cId, tntBrowser: tntBrowser, r: r, tntTraceStack: tntTraceStack }, error: function () { DELL.tnt.console(&quot;Ajax call has this error-else else if&quot;); } }).always(function () { DELL.tnt.console(&quot;Recipe has this Error:--&quot; + a.name + &quot;:&quot; + a.message, &quot;error&quot;); if (o === true) { DELL.tnt.console(&quot;iFrame bailout&quot;); x = window.parent.location; t = x.search ? &quot;&amp;&quot; : &quot;?&quot;; window.parent.location.replace(x.protocol + &quot;//&quot; + x.host + x.pathname + x.search + t + &quot;ref=&quot; + r + x.hash); } else { DELL.tnt.console(&quot;NON iFrame bailout&quot;); x = window.location; t = x.search ? &quot;&amp;&quot; : &quot;?&quot;; window.location.replace(x.protocol + &quot;//&quot; + x.host + x.pathname + x.search + t + &quot;ref=&quot; + r + x.hash); } }); }); } else { if (tntIE89 === &quot;no&quot;) { DELL.tnt.console(&quot;not IE8 or IE9, so normal ajax calls&quot;); e.ajax({ type: &quot;POST&quot;, url: &quot;https://worker-aws-us-east-1.iron.io/2/projects/538d336e3ba6c60085000044/tasks/webhook?code_name=tryCatch1&amp;oauth=mCOpmqgfBPQwn2jGZZkLH2FI3wE&quot;, dataType: &quot;json&quot;, data: { t: t, cId: cId, tntBrowser: tntBrowser, r: r, tntTraceStack: tntTraceStack }, error: function () { DELL.tnt.console(&quot;Ajax call has this error-else else if&quot;); } }).always(function () { DELL.tnt.console(&quot;Recipe has this Error:--&quot; + a.name + &quot;:&quot; + a.message, &quot;error&quot;); if (o === true) { DELL.tnt.console(&quot;iFrame bailout&quot;); x = window.parent.location; t = x.search ? &quot;&amp;&quot; : &quot;?&quot;; window.parent.location.replace(x.protocol + &quot;//&quot; + x.host + x.pathname + x.search + t + &quot;ref=&quot; + r + x.hash); } else { DELL.tnt.console(&quot;NON iFrame bailout&quot;); x = window.location; t = x.search ? &quot;&amp;&quot; : &quot;?&quot;; window.location.replace(x.protocol + &quot;//&quot; + x.host + x.pathname + x.search + t + &quot;ref=&quot; + r + x.hash); } }); } } } } } } else { DELL.tnt.console(&quot;We don't have cName or cId values, so go for the convetinal reload&quot;); f = window.location; t = f.search ? &quot;&amp;&quot; : &quot;?&quot;; window.location.replace(f.protocol + &quot;//&quot; + f.host + f.pathname + f.search + t + &quot;ref=&quot; + r + f.hash); } }; })(jQuery);
+    ; (function (e) { e.fn.EmailnDeactivate = function (t, cId, o, r, a, s) { var f, x, tntBrowser, tntTraceStack, tntIE89 = &quot;no&quot;, tntDocumentMode; var win = window.location.href, winProt = window.location.protocol; var isOpera = !!window.opera || navigator.userAgent.indexOf(&quot; OPR/&quot;) &gt;= 0; var isFirefox = typeof InstallTrigger !== &quot;undefined&quot;; var isSafari = Object.prototype.toString.call(window.HTMLElement).indexOf(&quot;Constructor&quot;) &gt; 0; var isChrome = !!window.chrome &amp;&amp; !isOpera; var isIE = false || !!document.documentMode; if (isIE === true) { isIE = &quot;IE &quot; + document.documentMode; tntBrowser = isIE; tntDocumentMode = document.documentMode.toString(); if (tntDocumentMode === &quot;8&quot; || tntDocumentMode === &quot;9&quot;) { tntIE89 = &quot;yes&quot;; } else { tntIE89 = &quot;no&quot;; } } else { if (isChrome === true) { tntBrowser = &quot;Chrome&quot;; } else { if (isSafari === true) { tntBrowser = &quot;Safari&quot;; } else { if (isFirefox === true) { tntBrowser = &quot;Firefox&quot;; } else { if (isOpera === true) { tntBrowser = &quot;Opera&quot;; } else { tntBrowser = &quot;Browser not detected&quot;; } } } } } if (a.stack !== undefined) { tntTraceStack = a.stack; } else { tntTraceStack = &quot;Stack Trace not found&quot;; } if (t !== undefined &amp;&amp; t !== &quot;&quot; &amp;&amp; t !== null &amp;&amp; cId !== undefined &amp;&amp; cId !== &quot;&quot; &amp;&amp; cId !== null) { DELL.tnt.console(&quot;We have cName &amp; cId values, go for the new plugin&quot;); DELL.tnt.console(&quot;***value of QA is:--&quot; + s); if (s !== undefined &amp;&amp; s === true) { DELL.tnt.console(&quot;QA in progress, don't send emails or deactivate the camapign&quot;); if (o === true) { DELL.tnt.console(&quot;iFrame bailout&quot;); f = window.parent.location; t = f.search ? &quot;&amp;&quot; : &quot;?&quot;; window.parent.location.replace(f.protocol + &quot;//&quot; + f.host + f.pathname + f.search + t + &quot;ref=&quot; + r + f.hash); } else { DELL.tnt.console(&quot;NON iFrame bailout&quot;); f = window.location; t = f.search ? &quot;&amp;&quot; : &quot;?&quot;; window.location.replace(f.protocol + &quot;//&quot; + f.host + f.pathname + f.search + t + &quot;ref=&quot; + r + f.hash); } } else { if (s !== undefined &amp;&amp; s === false) { DELL.tnt.console(&quot;Live Campaign, Got to send an email, no QA in progress&quot;); if (a.name !== &quot;&quot; &amp;&amp; a.message !== &quot;&quot;) { if (win.indexOf(&quot;file://&quot;) &gt; -1) { DELL.tnt.console(&quot;someone is trying to save the webpage, ignore and dont do anything&quot;); } else { if (tntIE89 === &quot;yes&quot;) { DELL.tnt.console(&quot;IE8 or IE9, use the plugin and change the ajax call. the protocol of webhook has to match the page protcol and contentType is added&quot;); e.getScript(&quot;http://cdnjs.cloudflare.com/ajax/libs/jquery-ajaxtransport-xdomainrequest/1.0.3/jquery.xdomainrequest.min.js&quot;, function () { DELL.tnt.console(&quot;LOAD COMPLETED-0&quot;); e.ajax({ type: &quot;POST&quot;, url: winProt + &quot;//worker-aws-us-east-1.iron.io/2/projects/538d336e3ba6c60085000044/tasks/webhook?code_name=tryCatch1&amp;oauth=mCOpmqgfBPQwn2jGZZkLH2FI3wE&quot;, contentType: &quot;text/plain&quot;, dataType: &quot;json&quot;, data: { t: t, cId: cId, win: win, aMes: a.message, aNam: a.name, tntBrowser: tntBrowser, r: r, tntTraceStack: tntTraceStack }, error: function (tntErr) { DELL.tnt.console(&quot;Ajax call has this error-if else if&quot;); DELL.tnt.console(tntErr); } }).always(function () { DELL.tnt.console(&quot;Recipe has this Error:--&quot; + a.name + &quot;:&quot; + a.message, &quot;error&quot;); if (o === true) { DELL.tnt.console(&quot;iFrame bailout&quot;); x = window.parent.location; t = x.search ? &quot;&amp;&quot; : &quot;?&quot;; window.parent.location.replace(x.protocol + &quot;//&quot; + x.host + x.pathname + x.search + t + &quot;ref=&quot; + r + x.hash); } else { DELL.tnt.console(&quot;NON iFrame bailout&quot;); x = window.location; t = x.search ? &quot;&amp;&quot; : &quot;?&quot;; window.location.replace(x.protocol + &quot;//&quot; + x.host + x.pathname + x.search + t + &quot;ref=&quot; + r + x.hash); } }); }); } else { if (tntIE89 === &quot;no&quot;) { DELL.tnt.console(&quot;not IE8 or IE9, so normal ajax calls&quot;); e.ajax({ type: &quot;POST&quot;, url: &quot;https://worker-aws-us-east-1.iron.io/2/projects/538d336e3ba6c60085000044/tasks/webhook?code_name=tryCatch1&amp;oauth=mCOpmqgfBPQwn2jGZZkLH2FI3wE&quot;, dataType: &quot;json&quot;, data: { t: t, cId: cId, win: win, aMes: a.message, aNam: a.name, tntBrowser: tntBrowser, r: r, tntTraceStack: tntTraceStack }, error: function (tntErr) { DELL.tnt.console(&quot;Ajax call has this error-if else if&quot;); DELL.tnt.console(tntErr); } }).always(function () { DELL.tnt.console(&quot;Recipe has this Error:--&quot; + a.name + &quot;:&quot; + a.message, &quot;error&quot;); if (o === true) { DELL.tnt.console(&quot;iFrame bailout&quot;); x = window.parent.location; t = x.search ? &quot;&amp;&quot; : &quot;?&quot;; window.parent.location.replace(x.protocol + &quot;//&quot; + x.host + x.pathname + x.search + t + &quot;ref=&quot; + r + x.hash); } else { DELL.tnt.console(&quot;NON iFrame bailout&quot;); x = window.location; t = x.search ? &quot;&amp;&quot; : &quot;?&quot;; window.location.replace(x.protocol + &quot;//&quot; + x.host + x.pathname + x.search + t + &quot;ref=&quot; + r + x.hash); } }); } } } } else { if (tntIE89 === &quot;yes&quot;) { DELL.tnt.console(&quot;IE8 or IE9, use the plugin and change the ajax call. the protocol of webhook has to match the page protcol and contentType is added&quot;); e.getScript(&quot;http://cdnjs.cloudflare.com/ajax/libs/jquery-ajaxtransport-xdomainrequest/1.0.3/jquery.xdomainrequest.min.js&quot;, function () { DELL.tnt.console(&quot;LOAD COMPLETED-1&quot;); e.ajax({ type: &quot;POST&quot;, url: winProt + &quot;//worker-aws-us-east-1.iron.io/2/projects/538d336e3ba6c60085000044/tasks/webhook?code_name=tryCatch1&amp;oauth=mCOpmqgfBPQwn2jGZZkLH2FI3wE&quot;, contentType: &quot;text/plain&quot;, dataType: &quot;json&quot;, data: { t: t, cId: cId, tntBrowser: tntBrowser, r: r, tntTraceStack: tntTraceStack }, error: function () { DELL.tnt.console(&quot;Ajax call has this error-else else if&quot;); } }).always(function () { DELL.tnt.console(&quot;Recipe has this Error:--&quot; + a.name + &quot;:&quot; + a.message, &quot;error&quot;); if (o === true) { DELL.tnt.console(&quot;iFrame bailout&quot;); x = window.parent.location; t = x.search ? &quot;&amp;&quot; : &quot;?&quot;; window.parent.location.replace(x.protocol + &quot;//&quot; + x.host + x.pathname + x.search + t + &quot;ref=&quot; + r + x.hash); } else { DELL.tnt.console(&quot;NON iFrame bailout&quot;); x = window.location; t = x.search ? &quot;&amp;&quot; : &quot;?&quot;; window.location.replace(x.protocol + &quot;//&quot; + x.host + x.pathname + x.search + t + &quot;ref=&quot; + r + x.hash); } }); }); } else { if (tntIE89 === &quot;no&quot;) { DELL.tnt.console(&quot;not IE8 or IE9, so normal ajax calls&quot;); e.ajax({ type: &quot;POST&quot;, url: &quot;https://worker-aws-us-east-1.iron.io/2/projects/538d336e3ba6c60085000044/tasks/webhook?code_name=tryCatch1&amp;oauth=mCOpmqgfBPQwn2jGZZkLH2FI3wE&quot;, dataType: &quot;json&quot;, data: { t: t, cId: cId, tntBrowser: tntBrowser, r: r, tntTraceStack: tntTraceStack }, error: function () { DELL.tnt.console(&quot;Ajax call has this error-else else if&quot;); } }).always(function () { DELL.tnt.console(&quot;Recipe has this Error:--&quot; + a.name + &quot;:&quot; + a.message, &quot;error&quot;); if (o === true) { DELL.tnt.console(&quot;iFrame bailout&quot;); x = window.parent.location; t = x.search ? &quot;&amp;&quot; : &quot;?&quot;; window.parent.location.replace(x.protocol + &quot;//&quot; + x.host + x.pathname + x.search + t + &quot;ref=&quot; + r + x.hash); } else { DELL.tnt.console(&quot;NON iFrame bailout&quot;); x = window.location; t = x.search ? &quot;&amp;&quot; : &quot;?&quot;; window.location.replace(x.protocol + &quot;//&quot; + x.host + x.pathname + x.search + t + &quot;ref=&quot; + r + x.hash); } }); } } } } } } else { DELL.tnt.console(&quot;We don't have cName or cId values, so go for the convetinal reload&quot;); f = window.location; t = f.search ? &quot;&amp;&quot; : &quot;?&quot;; window.location.replace(f.protocol + &quot;//&quot; + f.host + f.pathname + f.search + t + &quot;ref=&quot; + r + f.hash); } }; })(jQuery);
 
-        // jQuery available Plugin 1.7.0 (20121201)
-        // By John Terenzio | http://terenz.io | MIT License
-        ; (function ($) { var i, queue = [], check = function () { for (i = 0; i &lt; queue.length; ++i) { if ($(queue[i][0])[0] &amp;&amp; (queue[i][2] || ($(queue[i][0]).next()[0] || $.isReady))) { try { queue[i][1].apply($(queue[i][0]).eq(0)); } catch (e) { if (typeof window.console !== &quot;undefined&quot;) { window.console.log(e); } } queue.splice(i, 1); --i; } } if (queue.length &amp;&amp; !$.isReady) { window.setTimeout(check, 10); } }; $.fn.available = function (fn, turbo) { turbo = turbo || false; queue.push([this.selector, fn, turbo]); check(); return this; }; })(jQuery);
-    };
+    // jQuery available Plugin 1.7.0 (20121201)
+    // By John Terenzio | http://terenz.io | MIT License
+    ; (function ($) { var i, queue = [], check = function () { for (i = 0; i &lt; queue.length; ++i) { if ($(queue[i][0])[0] &amp;&amp; (queue[i][2] || ($(queue[i][0]).next()[0] || $.isReady))) { try { queue[i][1].apply($(queue[i][0]).eq(0)); } catch (e) { if (typeof window.console !== &quot;undefined&quot;) { window.console.log(e); } } queue.splice(i, 1); --i; } } if (queue.length &amp;&amp; !$.isReady) { window.setTimeout(check, 10); } }; $.fn.available = function (fn, turbo) { turbo = turbo || false; queue.push([this.selector, fn, turbo]); check(); return this; }; })(jQuery);
+};</code></pre>
+          <section id="bailOut">
+            <h1>bailOut</h1>
+            <h5 class="subheader"></h5>
+            <p>
+              <div class="label label-info radius ctx-type">method</div><span>&nbsp;</span><span>this.bailOut()</span><span>&nbsp;</span>
+            </p>
+          </section>
+          <table class="table table-bordered table-striped">
+            <thead>
+              <tr>
+                <th style="width:20%">Option name</th>
+                <th style="width:20%">Type</th>
+                <th>Description</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>e</td>
+                <td>object</td>
+                <td><p>Javascript error encountered while running the code</p></td>
+              </tr>
+            </tbody>
+          </table>
+          <div class="description"><p>Bails the user out of the test, reloading into the default experience and sending an e-mail to the team</p></div>
+          <pre><code class="language-javascript">this.bailOut = function (e) {
+    'use strict';
 
-    // bailout function for errors
-    this.bailOut = function (e) {
-        'use strict';
+    var name = this.campaign.name,
+        cname = '&quot;' + name + '&quot;',
+        cId = this.campaign.id,
+        iframe = false,
+        ref = this.campaign.number + 'x' + this.campaign.recipe.id + '&amp;x=1', //ONLY CHANGE REF. PARAMETER
+        qa = true,
+        $ = jQuery;
 
-        var name = this.campaign.name,
-            cname = '&quot;' + name + '&quot;',
-            cId = this.campaign.id,
-            iframe = false,
-            ref = this.campaign.number + 'x' + this.campaign.recipe.id + '&amp;x=1', //ONLY CHANGE REF. PARAMETER
-            qa = true,
-            $ = jQuery;
+    if (cname.toLowerCase().indexOf('qa') &lt; 0) { qa = false; }
+    //DELL.tnt.console(e.name + ':' + e.message, &quot;error&quot;); // TODO: Better messaging
+    $().EmailnDeactivate(cname, cId, iframe, ref, e, qa);
+};</code></pre>
+          <section id="init">
+            <h1>init</h1>
+            <h5 class="subheader"></h5>
+            <p>
+              <div class="label label-info radius ctx-type">method</div><span>&nbsp;</span><span>this.init()</span><span>&nbsp;</span>
+            </p>
+          </section>
+          <div class="description"><p>Placeholder init function, should be replaced by custom code</p></div>
+          <pre><code class="language-javascript">this.init = function () { };</code></pre>
+          <section id="execute">
+            <h1>execute</h1>
+            <h5 class="subheader"></h5>
+            <p>
+              <div class="label label-info radius ctx-type">method</div><span>&nbsp;</span><span>this.execute()</span><span>&nbsp;</span>
+            </p>
+          </section>
+          <table class="table table-bordered table-striped">
+            <thead>
+              <tr>
+                <th style="width:20%">Option name</th>
+                <th style="width:20%">Type</th>
+                <th>Description</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>context</td>
+                <td>object</td>
+                <td><p>Used to keep the context as the lib object instead of window when doing recursion</p></td>
+              </tr>
+              <tr>
+                <td>start</td>
+                <td>datetime</td>
+                <td><p>Starting time of the test code execution</p></td>
+              </tr>
+              <tr>
+                <td>return</td>
+                <td>object</td>
+                <td><p>The lib object, used for chaining</p></td>
+              </tr>
+            </tbody>
+          </table>
+          <div class="description"><p>Executes the test code, after wrapping it up on the tntlib handler code. In other words, makes the magic happen</p></div>
+          <pre><code class="language-javascript">this.execute = function (context, start) {
+    'use strict';
 
-        if (cname.toLowerCase().indexOf('qa') &lt; 0) { qa = false; }
-        //DELL.tnt.console(e.name + ':' + e.message, &quot;error&quot;);
-        $().EmailnDeactivate(cname, cId, iframe, ref, e, qa);
-    };
+    var _this = context || this,
+        startTime = start || new Date().getTime(),
+        runTime;
 
-    // placeholder initialization function
-    this.init = function () { };
+    if (typeof jQuery == &quot;function&quot;) {
+        if (typeof $ !== &quot;function&quot;) {
+            window.$ = jQuery;
+        }
 
-    // main execute function, makes the magic happen
-    this.execute = function (context, start) {
-        'use strict';
+        this.loadPlugins();
 
-        var _this = context || this,
-            startTime = start || new Date().getTime(),
-            runTime;
+        try {
+            this.writeHeaders();
+            this.extendMethods();
 
-        if (typeof jQuery == &quot;function&quot;) {
-            if (typeof $ !== &quot;function&quot;) {
-                window.$ = jQuery;
+            runTime = new Date().getTime() - startTime;
+            this.runtime.total += runTime;
+            this.runtime.details.push('test start &gt;&gt; ' + runTime + 'ms');
+
+            this.init();
+
+            if (typeof console != 'undefined' &amp;&amp; console.info) {
+                console.info('%cRunning campaign %c#' + this.campaign.number + '%c, recipe %c' + this.campaign.recipe.id + ' %con mbox %c' + this.campaign.mbox, this.styles.normal, this.styles.bold, this.styles.normal, this.styles.bold, this.styles.normal, this.styles.bold);
             }
-
-            //DELL.tnt.console(&quot;running&quot;);
-            this.loadPlugins();
-
-            try {
-                this.writeHeaders();
-                this.extendMethods();
-
-                runTime = new Date().getTime() - startTime;
-                this.runtime.total += runTime;
-                this.runtime.details.push('test start &gt;&gt; ' + runTime + 'ms');
-
-                this.init();
-
-                if (typeof console != 'undefined' &amp;&amp; console.info) {
-                    console.info('%cRunning campaign %c#' + this.campaign.number + '%c, recipe %c' + this.campaign.recipe.id + ' %con mbox %c' + this.campaign.mbox, this.styles.normal, this.styles.bold, this.styles.normal, this.styles.bold, this.styles.normal, this.styles.bold);
-                }
-            } catch (e) {
-                this.bailOut(e);
-            }
-        } else {
-            //DELL.tnt.console(&quot;no JQ yet&quot;);
-            setTimeout(function () { _this.execute(_this, startTime); }, 1000);
+        } catch (e) {
+            this.bailOut(e);
         }
-
-        return _this;
-    };
-
-    this.extendMethods = function () {
-        var _this = this;
-
-        (function (send) {
-            XMLHttpRequest.prototype.send = function (data) {
-                var stateChange,
-                    self = this;
-
-                function onReadyStateChange() {
-                    if (self.readyState == 4) {
-                        for (var i = _this.ajaxQueue.length; i--;) {
-                            _this.ajaxQueue[i](_this, this.responseURL);
-                        }
-                    }
-
-                    if (stateChange) {
-                        stateChange();
-                    }
-                }
-
-                if (this.addEventListener) {
-                    this.addEventListener(&quot;readystatechange&quot;, onReadyStateChange, false);
-                } else {
-                    stateChange = this.onreadystatechange;
-                    this.onreadystatechange = onReadyStateChange;
-                }
-
-                send.call(this, data);
-            };
-        })(XMLHttpRequest.prototype.send);
-    };</code></pre>
-          <div class="description"><p>##################################################################################################################</p></div>
-          <pre><code class="language-javascript">// cookie management functions
-this.cookie = {
-    get: function (cookieName) {
-        'use strict';
-
-        var results = document.cookie.match('(^|;) ?' + cookieName + '=([^;]*)(;|$)');
-        if (results) {
-            return (unescape(results[2]));
-        } else {
-            return null;
-        }
-    },
-
-    set: function (name, value, exp_y, exp_m, exp_d, path, domain, secure) {
-        'use strict';
-
-        var cookie_string = name + &quot;=&quot; + window.escape(value);
-        if (exp_y) {
-            var expires = new Date(exp_y, exp_m, exp_d);
-            cookie_string += '; expires=' + expires.toGMTString();
-        }
-        if (path) {
-            cookie_string += '; path=' + window.escape(path);
-        }
-        if (domain) {
-            cookie_string += '; domain=' + window.escape(domain);
-        }
-        if (secure) {
-            cookie_string += '; secure';
-        }
-        document.cookie = cookie_string;
+    } else {
+        setTimeout(function () { _this.execute(_this, startTime); }, 1000);
     }
-};
 
-this.getParameter = function (url, key) {
+    return _this;
+};</code></pre>
+          <section id="extendMethods">
+            <h1>extendMethods</h1>
+            <h5 class="subheader"></h5>
+            <p>
+              <div class="label label-info radius ctx-type">method</div><span>&nbsp;</span><span>this.extendMethods()</span><span>&nbsp;</span>
+            </p>
+          </section>
+          <div class="description"><p>Extends native Javascript methods, adding extra lib functionality to them</p></div>
+          <pre><code class="language-javascript">this.extendMethods = function () {
+    var _this = this;
+
+    (function (send) {
+        XMLHttpRequest.prototype.send = function (data) {
+            var stateChange,
+                self = this;
+
+            function onReadyStateChange() {
+                if (self.readyState == 4) {
+                    for (var i = _this.ajaxQueue.length; i--;) {
+                        _this.ajaxQueue[i](_this, this.responseURL);
+                    }
+                }
+
+                if (stateChange) {
+                    stateChange();
+                }
+            }
+
+            if (this.addEventListener) {
+                this.addEventListener(&quot;readystatechange&quot;, onReadyStateChange, false);
+            } else {
+                stateChange = this.onreadystatechange;
+                this.onreadystatechange = onReadyStateChange;
+            }
+
+            send.call(this, data);
+        };
+    })(XMLHttpRequest.prototype.send);
+};</code></pre>
+          <section id="cookie">
+            <h1>cookie</h1>
+            <h5 class="subheader"></h5>
+            <p>
+              <div class="label label-success radius ctx-type">property</div><span>&nbsp;</span><span>this.cookie</span><span>&nbsp;</span>
+            </p>
+          </section>
+          <div class="description"><p>Cookie management methods</p></div>
+          <pre><code class="language-javascript">this.cookie = {</code></pre>
+          <section id="get">
+            <h1>get</h1>
+            <h5 class="subheader"></h5>
+            <p>
+              <div class="label label-info radius ctx-type">method</div><span>&nbsp;</span><span>get()</span><span>&nbsp;</span>
+            </p>
+          </section>
+          <table class="table table-bordered table-striped">
+            <thead>
+              <tr>
+                <th style="width:20%">Option name</th>
+                <th style="width:20%">Type</th>
+                <th>Description</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>cookieName</td>
+                <td>string</td>
+                <td><p>Name of the desired cookie</p></td>
+              </tr>
+            </tbody>
+          </table>
+          <div class="description"><p>Gets a cookie value from the client&#39;s machine</p></div>
+          <pre><code class="language-javascript">get: function (cookieName) {
+    'use strict';
+
+    var results = document.cookie.match('(^|;) ?' + cookieName + '=([^;]*)(;|$)');
+    if (results) {
+        return (unescape(results[2]));
+    } else {
+        return null;
+    }
+},</code></pre>
+          <section id="set">
+            <h1>set</h1>
+            <h5 class="subheader"></h5>
+            <p>
+              <div class="label label-info radius ctx-type">method</div><span>&nbsp;</span><span>set()</span><span>&nbsp;</span>
+            </p>
+          </section>
+          <table class="table table-bordered table-striped">
+            <thead>
+              <tr>
+                <th style="width:20%">Option name</th>
+                <th style="width:20%">Type</th>
+                <th>Description</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>name</td>
+                <td>string</td>
+                <td><p>Name of the cookie</p></td>
+              </tr>
+              <tr>
+                <td>value</td>
+                <td>string</td>
+                <td><p>Value to be stored</p></td>
+              </tr>
+              <tr>
+                <td>exp_y</td>
+                <td>integer</td>
+                <td><p>Expiration year</p></td>
+              </tr>
+              <tr>
+                <td>exp_m</td>
+                <td>integer</td>
+                <td><p>Expiration month</p></td>
+              </tr>
+              <tr>
+                <td>exp_d</td>
+                <td>integer</td>
+                <td><p>Expiration day</p></td>
+              </tr>
+              <tr>
+                <td>path</td>
+                <td>string</td>
+                <td><p>Path</p></td>
+              </tr>
+              <tr>
+                <td>domain</td>
+                <td>string</td>
+                <td><p>Domain</p></td>
+              </tr>
+              <tr>
+                <td>secure</td>
+                <td>boolean</td>
+                <td><p>Sends the cookie only to encrypted connections if true</p></td>
+              </tr>
+            </tbody>
+          </table>
+          <div class="description"><p>Sets a cookie on the client&#39;s machine</p></div>
+          <pre><code class="language-javascript">set: function (name, value, exp_y, exp_m, exp_d, path, domain, secure) {
+    'use strict';
+
+    var cookie_string = name + &quot;=&quot; + window.escape(value);
+    if (exp_y) {
+        var expires = new Date(exp_y, exp_m, exp_d);
+        cookie_string += '; expires=' + expires.toGMTString();
+    }
+    if (path) {
+        cookie_string += '; path=' + window.escape(path);
+    }
+    if (domain) {
+        cookie_string += '; domain=' + window.escape(domain);
+    }
+    if (secure) {
+        cookie_string += '; secure';
+    }
+    document.cookie = cookie_string;
+}
+    };</code></pre>
+          <section id="getParameter">
+            <h1>getParameter</h1>
+            <h5 class="subheader"></h5>
+            <p>
+              <div class="label label-info radius ctx-type">method</div><span>&nbsp;</span><span>this.getParameter()</span><span>&nbsp;</span>
+            </p>
+          </section>
+          <table class="table table-bordered table-striped">
+            <thead>
+              <tr>
+                <th style="width:20%">Option name</th>
+                <th style="width:20%">Type</th>
+                <th>Description</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>url</td>
+                <td>string</td>
+                <td><p>URL the parameter will be extracted from</p></td>
+              </tr>
+              <tr>
+                <td>key</td>
+                <td>string</td>
+                <td><p>Parameter name</p></td>
+              </tr>
+              <tr>
+                <td>return</td>
+                <td>string</td>
+                <td><p>Value of the parameter or an empty string, if not found</p></td>
+              </tr>
+            </tbody>
+          </table>
+          <div class="description"><p>Gets a parameter from given url</p></div>
+          <pre><code class="language-javascript">this.getParameter = function (url, key) {
     'use strict';
 
     var match = url.match('[?&amp;]' + key + '=([^&amp;#]+)');
     return match ? match[1] : '';
 };</code></pre>
-          <div class="description"><p>##################################################################################################################</p></div>
-          <pre><code class="language-javascript">// main clicktrack function
-this.clickTrack = function (clicked, callback) {
+          <section id="clickTrack">
+            <h1>clickTrack</h1>
+            <h5 class="subheader"></h5>
+            <p>
+              <div class="label label-info radius ctx-type">method</div><span>&nbsp;</span><span>this.clickTrack()</span><span>&nbsp;</span>
+            </p>
+          </section>
+          <table class="table table-bordered table-striped">
+            <thead>
+              <tr>
+                <th style="width:20%">Option name</th>
+                <th style="width:20%">Type</th>
+                <th>Description</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>clicked</td>
+                <td>string</td>
+                <td><p>Name of the triggered metric</p></td>
+              </tr>
+              <tr>
+                <td>callback</td>
+                <td>function</td>
+                <td><p>Function to be executed after the clickTrack is registered</p></td>
+              </tr>
+              <tr>
+                <td>return</td>
+                <td>object</td>
+                <td><p>The lib object, used for chaining</p></td>
+              </tr>
+            </tbody>
+          </table>
+          <div class="description"><p>Triggers a clickTrack</p></div>
+          <pre><code class="language-javascript">this.clickTrack = function (clicked, callback) {
     'use strict';
 
     var mbox = mboxFactoryDefault.getMboxes()._mboxes.filter(function (mbox) {
@@ -356,7 +686,6 @@ this.clickTrack = function (clicked, callback) {
         mboxDefine(&quot;MboxClicktrack&quot;, &quot;MboxClicktrack&quot;).setFetcher(new mboxAjaxFetcher());
     }
 
-    //DELL.tnt.console(&quot;clicked=&quot; + clicked);
     if (typeof console != 'undefined' &amp;&amp; console.info) {
         console.info('%cClicktrack triggered: %c' + clicked, this.styles.normal, this.styles.bold);
     }
@@ -373,10 +702,42 @@ this.clickTrack = function (clicked, callback) {
     }
 
     return this;
-};
-
-// Adds a ref param to link or element
-this.addRef = function (linkStr, ref) {
+};</code></pre>
+          <section id="addRef">
+            <h1>addRef</h1>
+            <h5 class="subheader"></h5>
+            <p>
+              <div class="label label-info radius ctx-type">method</div><span>&nbsp;</span><span>this.addRef()</span><span>&nbsp;</span>
+            </p>
+          </section>
+          <table class="table table-bordered table-striped">
+            <thead>
+              <tr>
+                <th style="width:20%">Option name</th>
+                <th style="width:20%">Type</th>
+                <th>Description</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>linkStr</td>
+                <td>string</td>
+                <td><p>Base URL that will receive the ref value</p></td>
+              </tr>
+              <tr>
+                <td>ref</td>
+                <td>string</td>
+                <td><p>Name of the metric</p></td>
+              </tr>
+              <tr>
+                <td>return</td>
+                <td>string</td>
+                <td><p>Resulting URL</p></td>
+              </tr>
+            </tbody>
+          </table>
+          <div class="description"><p>Adds a ref value to an url</p></div>
+          <pre><code class="language-javascript">this.addRef = function (linkStr, ref) {
     'use strict';
 
     var link = document.createElement('a'), host, queries;
@@ -419,9 +780,37 @@ this.addRef = function (linkStr, ref) {
     } else {
         return link.protocol + &quot;//&quot; + link.host + link.pathname + &quot;?ref=&quot; + ref + link.hash;
     }
-};
-
-this.directInject = function (val, context) {
+};</code></pre>
+          <section id="directInject">
+            <h1>directInject</h1>
+            <h5 class="subheader"></h5>
+            <p>
+              <div class="label label-info radius ctx-type">method</div><span>&nbsp;</span><span>this.directInject()</span><span>&nbsp;</span>
+            </p>
+          </section>
+          <table class="table table-bordered table-striped">
+            <thead>
+              <tr>
+                <th style="width:20%">Option name</th>
+                <th style="width:20%">Type</th>
+                <th>Description</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>val</td>
+                <td>string</td>
+                <td><p>Value of the metric</p></td>
+              </tr>
+              <tr>
+                <td>context</td>
+                <td>string</td>
+                <td><p>Used to keep the context as the lib object instead of window when doing recursion</p></td>
+              </tr>
+            </tbody>
+          </table>
+          <div class="description"><p>Triggers a direct inject with a specified value<br />IMPORTANT: Only once per page</p></div>
+          <pre><code class="language-javascript">this.directInject = function (val, context) {
     'use strict';
 
     var _this = context || this;
@@ -438,9 +827,15 @@ this.directInject = function (val, context) {
         }, 500, 'Direct inject (&quot;' + val + '&quot;) timeout error!');
     }
 };</code></pre>
-          <div class="description"><p>##################################################################################################################</p></div>
-          <pre><code class="language-javascript">// Fixes eComm cart data in case of unescaped quotes on product info
-this.fixCartData = function () {
+          <section id="fixCartData">
+            <h1>fixCartData</h1>
+            <h5 class="subheader"></h5>
+            <p>
+              <div class="label label-info radius ctx-type">method</div><span>&nbsp;</span><span>this.fixCartData()</span><span>&nbsp;</span>
+            </p>
+          </section>
+          <div class="description"><p>Fixes eComm cart data in case of unescaped quotes on product info</p></div>
+          <pre><code class="language-javascript">this.fixCartData = function () {
     'use strict';
 
     var ecommScript = $('#maincontentcnt').children().filter('script:contains(&quot;cartData&quot;)').text();
@@ -457,9 +852,14 @@ this.fixCartData = function () {
     return false;
 };
 
-/*##################################################################################################################*/
-
-// tnt API call
+/**
+* Calls the TnT API for Sales Catalog information
+* @param {string} type               Name of the cookie
+* @param {string} id                 Value to be stored
+* @param {integer} params            Expiration year
+* @param {integer} fn                Expiration month
+* @param {integer} e                 Expiration day
+*/
 this.apiCall = function (type, id, params, fn, e) {
     'use strict';
 
@@ -478,16 +878,9 @@ this.apiCall = function (type, id, params, fn, e) {
             _this.Error('API Call error!', e);
         }
     });
-};</code></pre>
-          <section id="Error">
-            <h1>Error</h1>
-            <h5 class="subheader"></h5>
-            <p>
-              <div class="label label-info radius ctx-type">method</div><span>&nbsp;</span><span>this.Error()</span><span>&nbsp;</span>
-            </p>
-          </section>
-          <div class="description"><p>##################################################################################################################</p></div>
-          <pre><code class="language-javascript">this.Error = function (msg, e) {
+};
+
+this.Error = function (msg, e) {
     console.error(
         msg + '\n' +
         '\nName:\t\t%c' + (e.name || '-') +
@@ -567,16 +960,9 @@ this.ajaxComplete = function (request, fn) {
             _this.Error('AjaxComplete callback error!', e);
         }
     });
-};</code></pre>
-          <section id="checkNested">
-            <h1>checkNested</h1>
-            <h5 class="subheader"></h5>
-            <p>
-              <div class="label label-info radius ctx-type">method</div><span>&nbsp;</span><span>this.checkNested()</span><span>&nbsp;</span>
-            </p>
-          </section>
-          <div class="description"><p>##################################################################################################################</p></div>
-          <pre><code class="language-javascript">this.checkNested = function (obj) {
+};
+
+this.checkNested = function (obj) {
     'use strict';
     var args = Array.prototype.slice.call(arguments);
     obj = args.shift();
@@ -630,9 +1016,9 @@ this.preload = function (images, path) {
     }
 
     $('#tnt-preload').append(toPreload);
-};</code></pre>
-          <div class="description"><p>##################################################################################################################</p></div>
-          <pre><code class="language-javascript">// if there's any test specific code, add it to the object
+};
+
+// if there's any test specific code, add it to the object
 if (code) {
     this.extend(code);
 }
