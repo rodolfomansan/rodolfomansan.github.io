@@ -75,6 +75,8 @@
               </li>
               <li><a href="#fixCartData"><i class="alert alert-info"></i><span>fixCartData</span></a>
               </li>
+              <li><a href="#apiCall"><i class="alert alert-info"></i><span>apiCall</span></a>
+              </li>
               <li><a href="#Error"><i class="alert alert-info"></i><span>Error</span></a>
               </li>
               <li><a href="#wrapFunction"><i class="alert alert-info"></i><span>wrapFunction</span></a>
@@ -99,7 +101,7 @@
           </div>
         </div>
         <div class="span9">
-          <section id="options">
+                    <section id="options">
             <h1>options</h1>
             <h5 class="subheader"></h5>
             <p>
@@ -860,8 +862,8 @@
     var ecommScript = $('#maincontentcnt').children().filter('script:contains(&quot;cartData&quot;)').text();
 
     if (ecommScript !== '') {
-        var reBasket = /\{.+\}$/g,
-            reQuotes = /([^\{\:\,])\&quot;([^\}\:\,])/g,
+        var reBasket = '/\{.+\}$/g',
+            reQuotes = '/([^\{\:\,])\&quot;([^\}\:\,])/g',
             originalBasket = ecommScript.split(';')[2].match(reBasket)[0],
             fixedBasket = originalBasket.replace(reQuotes, '$1\\&quot;$2');
 
@@ -869,17 +871,52 @@
     }
 
     return false;
-};
-
-/**
-* Calls the TnT API for Sales Catalog information
-* @param {string} type               Type of the search. Possible values: [ oc | sku | model | configs ]
-* @param {string} id                 ID of the element being searched (oc, sku, etc)
-* @param {string} params             Element's parameters that will be requested
-* @param {function} fn               Function that will be executed on a successful request
-* @param {function} e                Function that will be executed on a failed request
-*/
-this.apiCall = function (type, id, params, fn, e) {
+};</code></pre>
+          <section id="apiCall">
+            <h1>apiCall</h1>
+            <h5 class="subheader"></h5>
+            <p>
+              <div class="label label-info radius ctx-type">method</div><span>&nbsp;</span><span>this.apiCall()</span><span>&nbsp;</span>
+            </p>
+          </section>
+          <table class="table table-bordered table-striped">
+            <thead>
+              <tr>
+                <th style="width:20%">Option name</th>
+                <th style="width:20%">Type</th>
+                <th>Description</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>type</td>
+                <td>string</td>
+                <td><p>Type of the search. Possible values: [ oc | sku | model | configs ]</p></td>
+              </tr>
+              <tr>
+                <td>id</td>
+                <td>string</td>
+                <td><p>ID of the element being searched (oc, sku, etc)</p></td>
+              </tr>
+              <tr>
+                <td>params</td>
+                <td>string</td>
+                <td><p>Element&#39;s parameters that will be requested</p></td>
+              </tr>
+              <tr>
+                <td>fn</td>
+                <td>function</td>
+                <td><p>Function that will be executed on a successful request</p></td>
+              </tr>
+              <tr>
+                <td>e</td>
+                <td>function</td>
+                <td><p>Function that will be executed on a failed request</p></td>
+              </tr>
+            </tbody>
+          </table>
+          <div class="description"><p>Calls the TnT API for Sales Catalog information</p></div>
+          <pre><code class="language-javascript">this.apiCall = function (type, id, params, fn, e) {
     'use strict';
 
     var _this = this,
