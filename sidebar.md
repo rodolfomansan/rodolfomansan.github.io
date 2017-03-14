@@ -1,2 +1,3 @@
 - Reference
+  - [Metrics](/metrics)
   - [Conditions](/conditions)
