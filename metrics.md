@@ -6,7 +6,7 @@ Parameter | Type | Description
 --- | --- | ---
 `element` | *string* | *(Optional)* Element that triggers the clicktrack. If passed, it will bind to the element automatically.
 `clicked` | *string* | Name of the triggered metric.
-`callback` | *string | function* | Function to be executed after the clickTrack is registered.
+`callback` | *string or function* | Function to be executed after the clickTrack is registered.
 
 ```javascript
 t1234.clickTrack('1234_test');
