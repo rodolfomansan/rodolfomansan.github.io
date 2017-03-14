@@ -13,6 +13,8 @@ t1234.waitForElement('#sideBar', function () {
 });
 ```
 
+---
+
 ## waitForCondition
 
 Waits for a condition to be met and then runs a callback function.
