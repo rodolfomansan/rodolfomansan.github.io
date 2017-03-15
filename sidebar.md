@@ -1,6 +1,6 @@
-- [Template](/template)
-- [Changelog](/changelog)
-- Reference
+- [**Template**](/template)
+- [**Changelog**](/changelog)
+- **Reference**
   - [Data](/data)
   - [Metrics](/metrics)
   - [Conditions](/conditions)
