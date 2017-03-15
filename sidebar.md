@@ -1,5 +1,5 @@
-- [**Template**](/template)
-- [**Changelog**](/changelog)
+- [Template](/template)
+- [Changelog](/changelog)
 - **Reference**
   - [Data](/data)
   - [Metrics](/metrics)
