@@ -1,6 +1,6 @@
 ## clickTrack
 
-Triggers a clickTrack. There are multiple ways to pass that (see below).
+Triggers a clickTrack. There are multiple ways to do that (see below).
 
 Parameter | Type | Description
 --- | --- | ---
@@ -13,29 +13,19 @@ t1234.clickTrack('1234_test');
 ```
 
 ```javascript
-t1234.clickTrack(null, '1234_test2');
+t1234.clickTrack('li.tileStack', '1234_test2');
 ```
 
 ```javascript
-t1234.clickTrack('li.tileStack', '1234_test3');
+t1234.clickTrack('1234_test3', 't1234.callback');
 ```
 
 ```javascript
-t1234.clickTrack(null, '1234_test4', 't1234.callback');
+t1234.clickTrack('1234_test4', t1234.callback);
 ```
 
 ```javascript
-t1234.clickTrack(null, '1234_test5', t1234.callback);
-```
-
-```javascript
-t1234.clickTrack(null, '1234_test6', function () {
-    console.info('dynamic callback');
-});
-```
-
-```javascript
-t1234.clickTrack('1234_test7', function () {
+t1234.clickTrack('1234_test5', function () {
     console.info('dynamic callback');
 });
 ```
@@ -44,7 +34,7 @@ t1234.clickTrack('1234_test7', function () {
 
 ## addRef
 
-Adds a ref value to an url.
+Adds a ref value to an url. There are multiple ways to do that (see below).
 
 Parameter | Type | Description
 --- | --- | ---
@@ -52,9 +42,11 @@ Parameter | Type | Description
 `callback` | *function* | Code to be executed when the condition is met
 
 ```javascript
-t1234.waitForCondition('flag=true', function () {
-	//logic
-});
+t1234.addRef('.mhLogo', '66666_ref1');
+```
+
+```javascript
+t1234.addRef('.catTitle img', 'src', '66666_ref2');
 ```
 
 ---
@@ -70,7 +62,5 @@ Parameter | Type | Description
 `callback` | *function* | Code to be executed when the condition is met
 
 ```javascript
-t1234.waitForCondition('flag=true', function () {
-	//logic
-});
+t66666.directInject('12312');
 ```

@@ -1,3 +1,5 @@
+- [Template](/template)
 - Reference
   - [Metrics](/metrics)
   - [Conditions](/conditions)
+ - [Changelog](/changelog)
