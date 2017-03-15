@@ -8,6 +8,8 @@ Parameter | Type | Description
 `clicked` | *string* | Name of the triggered metric.
 `callback` | *string or function* | Function to be executed after the clickTrack is registered.
 
+If an element is passed as the first argument, *tntLib* automatically fills `t1234.clickedElement` with its *jQuery object* whenever a click is triggered, allowing the usage of the parameter inside the callbacks.
+
 ```javascript
 t1234.clickTrack('1234_test');
 ```
@@ -27,6 +29,12 @@ t1234.clickTrack('1234_test4', t1234.callback);
 ```javascript
 t1234.clickTrack('1234_test5', function () {
     console.info('dynamic callback');
+});
+```
+
+```javascript
+t1234.clickTrack('li.tileStack', '1234_test6', function () {
+    console.info(t1234.clickedElement); // returns the clicked $('li.tileStack') object
 });
 ```
 

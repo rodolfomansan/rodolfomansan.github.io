@@ -65,6 +65,34 @@ t1234.checkNested('DELL.com.Mag.Anav');
 t1234.checkNested(DELL, 'com', 'Mag', 'Anav');
 ```
 
+## preload
+
+Preloads image(s) on the page, for posterior use.
+
+Parameter | Type | Description
+--- | --- | ---
+`images` | *array* | List of image names to be preloaded. 
+`path` | *string* | Path of the images.
+
+```javascript
+t1234.preload(['hero-image.jpg', 'windows.png'], 'http://i.dell.com/sites/imagecontent/consumer/en/PublishingImages/TnT_Tests/1234/');
+```
+
 ---
 
 ## Error
+
+Custom error handling function that adds extra information to the browser's console before triggering a bailout.
+
+Parameter | Type | Description
+--- | --- | ---
+`msg` | *string* | Custom error message to be displayed.
+`e` | *object* | Error object
+
+```javascript
+try {
+    // logic
+} catch (e) {
+    t1234.Error('Custom error message.', e);
+}
+```
