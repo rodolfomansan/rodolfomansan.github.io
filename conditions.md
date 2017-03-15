@@ -15,6 +15,20 @@ t1234.waitForElement('#sideBar', function () {
 
 ---
 
+## stopWaitingFor
+
+Disable the timeout loop and stops the code from waiting for the specified selector.
+
+Parameter | Type | Description
+--- | --- | ---
+`selector` | *string* | Selector that will match the element that will not being sought anymore.
+
+```javascript
+t1234.stopWaitingFor('#sideBar');
+```
+
+---
+
 ## waitForCondition
 
 Waits for a condition to be met and then runs a callback function.
@@ -27,5 +41,45 @@ Parameter | Type | Description
 ```javascript
 t1234.waitForCondition('flag=true', function () {
 	//logic
+});
+```
+
+---
+
+## setTimeout
+
+Vanilla *setTimeout*, wrapped in a try catch block.
+
+Parameter | Type | Description
+--- | --- | ---
+`fn` | *function* | Callback function to be executed on the determined timeout
+`timer` | *integer* | Time in millisseconds to wait before triggering the callback
+`msg` | *string* | *(Optional)* Custom error message, in case of function failure
+
+```javascript
+t1234.setTimeout(function () {
+    // logic
+}, 200);
+```
+
+```javascript
+t1234.setTimeout(function () {
+    // logic
+}, 1000, 'Logic execution error!');
+```
+
+---
+
+## ready
+
+$(document).ready, wrapped in a try catch block.
+
+Parameter | Type | Description
+--- | --- | ---
+`fn` | *function* | Callback function to be executed
+
+```javascript
+t1234.ready(function () {
+    //logic
 });
 ```
