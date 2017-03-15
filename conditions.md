@@ -72,7 +72,7 @@ t1234.setTimeout(function () {
 
 ## ready
 
-$(document).ready, wrapped in a try catch block.
+*$(document).ready*, wrapped in a try catch block.
 
 Parameter | Type | Description
 --- | --- | ---

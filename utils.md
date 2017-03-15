@@ -20,7 +20,7 @@ Parameter | Type | Description
 `id` | *string* | ID of the element being searched. *(oc, sku, etc)*
 `params` | *string* | Element's parameters that will be requested.
 `fn` | *function* | Function that will be executed on a successful request. <br />Receives `data` as the request response.
-`e` | *function* | Function that will be executed on a failed request.
+`e` | *function* | *(Optional)* Function that will be executed on a failed request.
 
 ```javascript
 t1234.apiCall('oc', 'fncwq53,dncwdp1', 'CatalogImage,Image,ShortDescription', function (data) {

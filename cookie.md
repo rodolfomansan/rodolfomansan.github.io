@@ -22,10 +22,10 @@ Parameter | Type | Description
 --- | --- | ---
 `name` | *string* | Name of the cookie
 `value` | *string* | Value to be stored
-`date` | *datetime* | Expiration date. This is later converted to a GMT datetime. (date object, example input: new Date(2016, 6, 27, 20, 30)
-`path` | *string* | Path
-`domain` | *string* | Domain
-`secure` | *boolean* | Sends the cookie only to encrypted connections if true
+`date` | *datetime* | *(Optional)* Expiration date. This is later converted to a GMT datetime. (date object, example input: new Date(2016, 6, 27, 20, 30)
+`path` | *string* | *(Optional)* Path
+`domain` | *string* | *(Optional)* Domain
+`secure` | *boolean* | *(Optional)* Sends the cookie only to encrypted connections if true
 
 ```javascript
 t1234.cookie.set('1234_cookie', '1234:cookie:test:value', new Date(2017, 6, 27, 20, 30), '/', 'dell.com');
