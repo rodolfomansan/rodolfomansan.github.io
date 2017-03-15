@@ -4,3 +4,4 @@
   - [Data](/data)
   - [Metrics](/metrics)
   - [Conditions](/conditions)
+  - [Cookie](/cookie)
