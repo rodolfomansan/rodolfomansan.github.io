@@ -32,7 +32,7 @@ In order to start developing tests with tntLib, copy the following template to a
 
 ---
 
-## atjs Template
+## atjsTemplate
 
 When developing tests on at.js, please use the following template instead.
 

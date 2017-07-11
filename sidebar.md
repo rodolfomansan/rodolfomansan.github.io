@@ -1,4 +1,4 @@
-- [Usage](/usage)
+- [Template](/usage?id=template)
 - [Changelog](/changelog)
 - **Reference**
   - [Data](/data)
