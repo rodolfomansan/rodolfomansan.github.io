@@ -1,3 +1,7 @@
+## v1.1.0
+- New feature: *waitForObject*
+- at.js support
+
 ## v1.0.0
 
 - Reorganized the lib, leaving only the public methods on the object root level.

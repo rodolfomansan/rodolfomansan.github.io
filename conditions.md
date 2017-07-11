@@ -46,6 +46,23 @@ t1234.waitForCondition('flag=true', function () {
 
 ---
 
+## waitForObject
+
+Waits for an object to be available and then runs a callback function.
+
+Parameter | Type | Description
+--- | --- | ---
+`object` | *string* | Object being waited to be available
+`callback` | *function* | Code to be executed when the condition is met
+
+```javascript
+t1234.waitForObject('DELL.com.Mag', function () {
+	//logic
+});
+```
+
+---
+
 ## setTimeout
 
 Vanilla *setTimeout*, wrapped in a try catch block.
