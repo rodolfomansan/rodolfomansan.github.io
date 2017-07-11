@@ -30,6 +30,8 @@ In order to start developing tests with tntLib, copy the following template to a
 </script>
 ```
 
+---
+
 ## at.js Template
 
 When developing tests on at.js, please use the following template instead.
